@@ -9,15 +9,15 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105",
+        default: "bg-primary text-primary-foreground hover:bg-highlight hover:scale-105 transition-all duration-300",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:scale-105",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
-        hero: "bg-card text-foreground border-2 border-primary hover:bg-primary hover:text-primary-foreground hover:scale-110 shadow-lg font-bold",
-        accent: "bg-accent text-accent-foreground hover:bg-accent/80 hover:scale-105",
-        highlight: "bg-highlight text-foreground hover:bg-highlight/80 hover:scale-105",
+        outline: "border-2 border-primary bg-background text-primary hover:bg-highlight hover:text-white hover:border-highlight transition-all duration-300",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-highlight hover:scale-105 transition-all duration-300",
+        ghost: "hover:bg-highlight/10 hover:text-highlight transition-all duration-300",
+        link: "text-primary underline-offset-4 hover:underline hover:text-highlight transition-all duration-300",
+        hero: "bg-primary text-primary-foreground border-2 border-primary hover:bg-highlight hover:border-highlight hover:scale-110 shadow-lg font-bold transition-all duration-300",
+        accent: "bg-accent text-accent-foreground hover:bg-highlight hover:scale-105 transition-all duration-300",
+        highlight: "bg-highlight text-white hover:bg-highlight/90 hover:scale-105 transition-all duration-300",
       },
       size: {
         default: "h-10 px-4 py-2",
