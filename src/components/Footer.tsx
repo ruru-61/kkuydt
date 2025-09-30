@@ -38,7 +38,9 @@ const Footer = () => {
             <h4 className="text-xl font-bold mb-4 text-foreground">Sosyal Medya</h4>
             <div className="flex gap-4">
               <a 
-                href="#" 
+                href="https://instagram.com/kku.ydt" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center hover:scale-110 transition-transform"
                 aria-label="Instagram"
               >

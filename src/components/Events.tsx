@@ -13,35 +13,35 @@ interface Event {
 
 const upcomingEvents: Event[] = [
   {
-    title: "İngilizce Konuşma Kulübü",
-    date: "15 Ocak 2025",
-    location: "Kampüs Kafe",
-    description: "Her seviyeden öğrencilerin rahatça İngilizce pratik yapabileceği sohbet etkinliği. Kahve eşliğinde keyifli bir öğrenme deneyimi!",
-    participants: "25",
+    title: "Speaking Club 🗣️",
+    date: "1 Ekim 2024",
+    location: "Microlot Café",
+    description: "İngilizce, Fransızca, Arapça ve Türkçe masalarında konuşma pratiği yapın! Farklı dil seviyelerinden öğrencilerle tanışın.",
+    participants: "İngilizce • Fransızca • Arapça • Türkçe",
     color: "primary"
   },
   {
-    title: "Fransızca Film Gecesi 🎬",
-    date: "22 Ocak 2025",
-    location: "Sinema Salonu",
-    description: "Klasik bir Fransız filmi izleyip tartışacağız. Alt yazılı gösterim ve kültürel sohbet!",
-    participants: "40",
+    title: "Speaking Club 🗣️",
+    date: "8 Ekim 2024",
+    location: "Microlot Café",
+    description: "İngilizce, Fransızca, Arapça ve Türkçe masalarında konuşma pratiği yapın! Farklı dil seviyelerinden öğrencilerle tanışın.",
+    participants: "İngilizce • Fransızca • Arapça • Türkçe",
     color: "secondary"
   },
   {
-    title: "Çok Kültürlü Yemek Festivali",
-    date: "5 Şubat 2025",
-    location: "Öğrenci Merkezi",
-    description: "Farklı ülkelerden geleneksel yemekler, müzik ve dans performansları. Kültürler arası dostluk şenliği!",
-    participants: "100+",
+    title: "Speaking Club 🗣️",
+    date: "14 Ekim 2024",
+    location: "Microlot Café",
+    description: "İngilizce, Fransızca, Arapça ve Türkçe masalarında konuşma pratiği yapın! Farklı dil seviyelerinden öğrencilerle tanışın.",
+    participants: "İngilizce • Fransızca • Arapça • Türkçe",
     color: "accent"
   },
   {
-    title: "İspanyolca Karaoke 🎤",
-    date: "12 Şubat 2025",
-    location: "Etkinlik Salonu",
-    description: "Latin müzikleri eşliğinde eğlenceli bir karaoke gecesi. Şarkı söyleyerek İspanyolca pratiği!",
-    participants: "30",
+    title: "Speaking Club 🗣️",
+    date: "22 Ekim 2024",
+    location: "Microlot Café",
+    description: "İngilizce, Fransızca, Arapça ve Türkçe masalarında konuşma pratiği yapın! Farklı dil seviyelerinden öğrencilerle tanışın.",
+    participants: "İngilizce • Fransızca • Arapça • Türkçe",
     color: "highlight"
   }
 ];
@@ -94,7 +94,7 @@ const Events = () => {
                   </div>
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <Users className="w-4 h-4" />
-                    <span>{event.participants} katılımcı bekleniyor</span>
+                    <span>19:00 – 21:00 • {event.participants}</span>
                   </div>
                 </div>
                 
