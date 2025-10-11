@@ -3,7 +3,7 @@ import { Target, Eye } from "lucide-react";
 const MissionVision = () => {
   return <section className="py-20 px-4 bg-background">
       <div className="container mx-auto max-w-6xl">
-        <h2 className="text-5xl md:text-6xl font-bold text-center mb-16 gradient-primary bg-clip-text text-black/[0.31]">
+        <h2 className="text-5xl md:text-6xl font-bold text-center mb-16 gradient-primary bg-clip-text text-slate-50">
           Misyon & Vizyon
         </h2>
         
