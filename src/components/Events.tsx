@@ -44,7 +44,7 @@ const Events = () => {
         <h2 className="text-5xl md:text-6xl font-bold text-center mb-4 text-black">
           <span className="gradient-secondary bg-clip-text text-transparent">Yaklaşan Etkinlikler</span>
         </h2>
-        <p className="text-center text-xl text-muted-foreground mb-16">
+        <p className="text-center text-xl mb-16 text-black">
           Heyecan dolu programlarımıza katılın! 🎉
         </p>
         
