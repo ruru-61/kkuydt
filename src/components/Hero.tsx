@@ -1,16 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Globe, Languages, Users } from "lucide-react";
 import heroImage from "@/assets/hero-illustration.jpg";
-
 const Hero = () => {
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-hero">
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-hero">
       <div className="absolute inset-0 opacity-20">
-        <img 
-          src={heroImage} 
-          alt="Language learning community illustration" 
-          className="w-full h-full object-cover"
-        />
+        <img src={heroImage} alt="Language learning community illustration" className="w-full h-full object-cover" />
       </div>
       
       {/* Floating decorative elements */}
@@ -39,7 +33,7 @@ const Hero = () => {
             </div>
             <div className="flex items-center gap-2 bg-card/20 backdrop-blur-sm px-6 py-3 rounded-full">
               <Users className="w-6 h-6" />
-              <span>300+ Aktif Üye</span>
+              <span>200+ Aktif Üye</span>
             </div>
             <div className="flex items-center gap-2 bg-card/20 backdrop-blur-sm px-6 py-3 rounded-full">
               <Globe className="w-6 h-6" />
@@ -53,12 +47,9 @@ const Hero = () => {
           </p>
           
           <div className="pt-8">
-            <Button 
-              variant="hero" 
-              size="xl"
-              className="text-xl font-bold"
-              onClick={() => document.getElementById('join')?.scrollIntoView({ behavior: 'smooth' })}
-            >
+            <Button variant="hero" size="xl" className="text-xl font-bold" onClick={() => document.getElementById('join')?.scrollIntoView({
+            behavior: 'smooth'
+          })}>
               Topluluğa Katıl 🚀
             </Button>
           </div>
@@ -71,8 +62,6 @@ const Hero = () => {
           <div className="w-2 h-3 rounded-full bg-card/50" />
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
