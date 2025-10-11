@@ -34,9 +34,7 @@ const JoinSection = () => {
             </a>
           </Button>
           
-          <Button variant="outline" size="xl" className="text-xl font-bold bg-card/20 backdrop-blur-sm border-card text-card hover:bg-card hover:text-foreground">
-            Bize Ulaşın 💬
-          </Button>
+          
         </div>
         
         <div className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
@@ -45,7 +43,7 @@ const JoinSection = () => {
             <p className="text-card/80 mt-2 drop-shadow-lg">Aktif Üye</p>
           </div>
           <div className="text-center">
-            <p className="text-4xl md:text-5xl font-bold text-card drop-shadow-lg">50+</p>
+            <p className="text-4xl md:text-5xl font-bold text-card drop-shadow-lg">6+</p>
             <p className="text-card/80 mt-2 drop-shadow-lg">Yıllık Etkinlik</p>
           </div>
           <div className="text-center">

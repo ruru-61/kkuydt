@@ -5,7 +5,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-12 mb-8">
           {/* About */}
           <div>
-            <h3 className="text-2xl font-bold mb-4 gradient-primary bg-clip-text text-transparent">
+            <h3 className="text-2xl font-bold mb-4 gradient-primary bg-clip-text text-black">
               Yabancı Diller Topluluğu
             </h3>
             <p className="text-muted-foreground leading-relaxed">
@@ -16,7 +16,7 @@ const Footer = () => {
           
           {/* Contact */}
           <div>
-            <h4 className="text-xl font-bold mb-4 text-foreground">İletişim</h4>
+            <h4 className="text-xl font-bold mb-4 text-black">İletişim</h4>
             <div className="space-y-3 text-muted-foreground">
               <div className="flex items-start gap-2">
                 <Mail className="w-5 h-5 mt-0.5 text-primary" />
@@ -31,7 +31,7 @@ const Footer = () => {
           
           {/* Social Media */}
           <div>
-            <h4 className="text-xl font-bold mb-4 text-foreground">Sosyal Medya</h4>
+            <h4 className="text-xl font-bold mb-4 text-black">Sosyal Medya</h4>
             <div className="flex gap-4">
               <a href="https://www.instagram.com/kku.ydt?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center hover:scale-110 transition-transform" aria-label="Instagram">
                 <Instagram className="w-6 h-6 text-card" />
@@ -45,9 +45,7 @@ const Footer = () => {
                 <Linkedin className="w-6 h-6 text-card" />
               </a>
               
-              <a href="#" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform" aria-label="X">
-                <Twitter className="w-6 h-6 text-card" />
-              </a>
+              
             </div>
             <p className="text-muted-foreground mt-4 text-sm">
               Etkinlik duyuruları ve güncellemeler için bizi takip edin! ✨
@@ -57,7 +55,7 @@ const Footer = () => {
         
         <div className="border-t border-border pt-8 text-center text-muted-foreground">
           <p>© 2025 Yabancı Diller Topluluğu. Tüm hakları saklıdır.</p>
-          <p className="mt-2 text-sm">Made with 💜 by our amazing community</p>
+          
         </div>
       </div>
     </footer>;
