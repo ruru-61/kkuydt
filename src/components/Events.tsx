@@ -75,9 +75,7 @@ const Events = () => {
                   </div>
                 </div>
                 
-                <Button variant={event.color as any} className="w-full mt-4">
-                  Katılmak İstiyorum!
-                </Button>
+                
               </CardContent>
             </Card>)}
         </div>

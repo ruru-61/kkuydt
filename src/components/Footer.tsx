@@ -5,7 +5,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-12 mb-8">
           {/* About */}
           <div>
-            <h3 className="text-2xl font-bold mb-4 gradient-primary bg-clip-text text-black">
+            <h3 className="text-2xl font-bold mb-4 gradient-primary bg-clip-text text-slate-50">
               Yabancı Diller Topluluğu
             </h3>
             <p className="text-muted-foreground leading-relaxed">
