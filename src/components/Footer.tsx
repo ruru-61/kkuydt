@@ -45,8 +45,8 @@ const Footer = () => {
                 <Linkedin className="w-6 h-6 text-card" />
               </a>
               
-              <a href="#" className="w-12 h-12 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform" aria-label="Email">
-                <Mail className="w-6 h-6 text-card" />
+              <a href="#" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform" aria-label="X">
+                <Twitter className="w-6 h-6 text-card" />
               </a>
             </div>
             <p className="text-muted-foreground mt-4 text-sm">
