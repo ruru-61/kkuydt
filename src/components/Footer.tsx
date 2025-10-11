@@ -1,4 +1,4 @@
-import { Instagram, Twitter, Mail, MapPin } from "lucide-react";
+import { Instagram, Twitter, Mail, Phone } from "lucide-react";
 const Footer = () => {
   return <footer className="bg-foreground/5 py-12 px-4">
       <div className="container mx-auto max-w-6xl">
@@ -23,7 +23,7 @@ const Footer = () => {
                 <a href="mailto:info@ydtoplulugu.edu.tr" className="hover:text-primary transition-colors">contactkkuydt@gmail.com</a>
               </div>
               <div className="flex items-start gap-2">
-                <MapPin className="w-5 h-5 mt-0.5 text-accent" />
+                <Phone className="w-5 h-5 mt-0.5 text-accent" />
                 <span>0545 449 09 55</span>
               </div>
             </div>
