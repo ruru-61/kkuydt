@@ -42,7 +42,7 @@ const Events = () => {
   return <section className="py-20 px-4 bg-muted/30">
       <div className="container mx-auto max-w-7xl">
         <h2 className="text-5xl md:text-6xl font-bold text-center mb-4 text-black">
-          <span className="gradient-secondary bg-clip-text text-slate-50">Yaklaşan Etkinlikler</span>
+          <span className="gradient-secondary bg-clip-text text-slate-950">Yaklaşan Etkinlikler</span>
         </h2>
         <p className="text-center text-xl mb-16 text-black">
           Heyecan dolu programlarımıza katılın! 🎉
