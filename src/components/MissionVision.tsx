@@ -28,10 +28,7 @@ const MissionVision = () => {
               </div>
               <CardTitle className="text-3xl text-accent">Vizyonumuz</CardTitle>
             </CardHeader>
-            <CardContent className="text-lg leading-relaxed text-foreground/80">
-              Üniversitemizin en aktif ve tanınan topluluklarından biri olmak. 
-              Öğrencilerimizin farklı dillerde kendini ifade edebildiği, uluslararası etkinliklere ev sahipliği yapan bir merkez olmak.
-            </CardContent>
+            <CardContent className="text-lg leading-relaxed text-foreground/80">Üniversitemizin en aktif ve tanınan topluluklarından biri olmak. Öğrencilerimizin farklı dillerde kendini ifade edebildiği, çeşitli etkinliklere ev sahipliği yapan bir merkez olmak.</CardContent>
           </Card>
         </div>
       </div>
