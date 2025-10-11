@@ -37,7 +37,7 @@ const Footer = () => {
                 <Instagram className="w-6 h-6 text-card" />
               </a>
               
-              <a href="#" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center hover:scale-110 transition-transform" aria-label="X">
+              <a href="https://x.com/kkuydt?fbclid=PAZXh0bgNhZW0CMTEAAad-pMphLlpHZhfHNxIvvPCmrKaHSGhhSrhoZQ8E5q7lKhrK8uJjdHrdmZXXeg_aem_7e6PGz4kbf57F5OnZC2puA" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center hover:scale-110 transition-transform" aria-label="X">
                 <Twitter className="w-6 h-6 text-card" />
               </a>
               
