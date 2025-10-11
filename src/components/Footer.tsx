@@ -41,7 +41,7 @@ const Footer = () => {
                 <Twitter className="w-6 h-6 text-card" />
               </a>
               
-              <a href="#" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center hover:scale-110 transition-transform" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/k%C4%B1r%C4%B1kkale-%C3%BCniversitesi-yabanc%C4%B1-diller-toplulu%C4%9Fu-259b60381" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center hover:scale-110 transition-transform" aria-label="LinkedIn">
                 <Linkedin className="w-6 h-6 text-card" />
               </a>
               
