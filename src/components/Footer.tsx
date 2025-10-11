@@ -33,7 +33,7 @@ const Footer = () => {
           <div>
             <h4 className="text-xl font-bold mb-4 text-black">Sosyal Medya</h4>
             <div className="flex gap-4">
-              <a href="https://www.instagram.com/kku.ydt?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center hover:scale-110 transition-transform" aria-label="Instagram">
+              <a href="https://www.instagram.com/kku.ydt?utm_source=ig_web_button_share_sheet&igsh=MXFnNmo4YmwxbnR1eA==" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center hover:scale-110 transition-transform" aria-label="Instagram">
                 <Instagram className="w-6 h-6 text-card" />
               </a>
               
