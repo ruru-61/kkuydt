@@ -34,8 +34,15 @@ const JoinSection = () => {
             variant="hero" 
             size="xl"
             className="text-xl font-bold shadow-2xl"
+            asChild
           >
-            Üyelik Formu 📝
+            <a 
+              href="https://docs.google.com/forms/d/e/1FAIpQLSe67oMMHtY8N5UARMoFRSd-RqUdQ8CJiOIISMks4VvEyABHcg/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Üyelik Formu 📝
+            </a>
           </Button>
           
           <Button 
