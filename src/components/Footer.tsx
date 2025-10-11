@@ -1,8 +1,6 @@
 import { Instagram, Twitter, Mail, MapPin } from "lucide-react";
-
 const Footer = () => {
-  return (
-    <footer className="bg-foreground/5 py-12 px-4">
+  return <footer className="bg-foreground/5 py-12 px-4">
       <div className="container mx-auto max-w-6xl">
         <div className="grid md:grid-cols-3 gap-12 mb-8">
           {/* About */}
@@ -22,13 +20,11 @@ const Footer = () => {
             <div className="space-y-3 text-muted-foreground">
               <div className="flex items-start gap-2">
                 <Mail className="w-5 h-5 mt-0.5 text-primary" />
-                <a href="mailto:info@ydtoplulugu.edu.tr" className="hover:text-primary transition-colors">
-                  info@ydtoplulugu.edu.tr
-                </a>
+                <a href="mailto:info@ydtoplulugu.edu.tr" className="hover:text-primary transition-colors">contactkkuydt@gmail.com</a>
               </div>
               <div className="flex items-start gap-2">
                 <MapPin className="w-5 h-5 mt-0.5 text-accent" />
-                <span>Öğrenci Kulüpleri Merkezi, Kampüs</span>
+                <span>0545 449 09 55</span>
               </div>
             </div>
           </div>
@@ -37,27 +33,11 @@ const Footer = () => {
           <div>
             <h4 className="text-xl font-bold mb-4 text-foreground">Sosyal Medya</h4>
             <div className="flex gap-4">
-              <a 
-                href="https://instagram.com/kku.ydt" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center hover:scale-110 transition-transform"
-                aria-label="Instagram"
-              >
+              <a href="https://instagram.com/kku.ydt" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center hover:scale-110 transition-transform" aria-label="Instagram">
                 <Instagram className="w-6 h-6 text-card" />
               </a>
-              <a 
-                href="#" 
-                className="w-12 h-12 rounded-full gradient-secondary flex items-center justify-center hover:scale-110 transition-transform"
-                aria-label="Twitter"
-              >
-                <Twitter className="w-6 h-6 text-card" />
-              </a>
-              <a 
-                href="#" 
-                className="w-12 h-12 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform"
-                aria-label="Email"
-              >
+              
+              <a href="#" className="w-12 h-12 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform" aria-label="Email">
                 <Mail className="w-6 h-6 text-card" />
               </a>
             </div>
@@ -72,8 +52,6 @@ const Footer = () => {
           <p className="mt-2 text-sm">Made with 💜 by our amazing community</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
