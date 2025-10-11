@@ -1,4 +1,4 @@
-import { Instagram, Twitter, Mail, Phone } from "lucide-react";
+import { Instagram, Twitter, Mail, Phone, Linkedin } from "lucide-react";
 const Footer = () => {
   return <footer className="bg-foreground/5 py-12 px-4">
       <div className="container mx-auto max-w-6xl">
@@ -35,6 +35,14 @@ const Footer = () => {
             <div className="flex gap-4">
               <a href="https://instagram.com/kku.ydt" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center hover:scale-110 transition-transform" aria-label="Instagram">
                 <Instagram className="w-6 h-6 text-card" />
+              </a>
+              
+              <a href="#" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center hover:scale-110 transition-transform" aria-label="X">
+                <Twitter className="w-6 h-6 text-card" />
+              </a>
+              
+              <a href="#" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center hover:scale-110 transition-transform" aria-label="LinkedIn">
+                <Linkedin className="w-6 h-6 text-card" />
               </a>
               
               <a href="#" className="w-12 h-12 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform" aria-label="Email">
