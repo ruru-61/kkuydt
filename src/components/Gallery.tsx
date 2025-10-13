@@ -23,7 +23,7 @@ const Gallery = () => {
   return <section className="py-20 px-4 bg-background">
       <div className="container mx-auto max-w-7xl">
         <h2 className="text-5xl md:text-6xl font-bold text-center mb-4">
-          <span className="gradient-primary bg-clip-text text-slate-50">Eğitimlerimiz</span>
+          <span className="gradient-primary bg-clip-text text-slate-50">Geçmiş Etkinlikler</span>
         </h2>
         <p className="text-center text-xl text-muted-foreground mb-16">
           Unutulmaz anılarımızdan kareler 📸
