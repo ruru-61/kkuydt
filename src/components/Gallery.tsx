@@ -13,7 +13,7 @@ const galleryItems: GalleryItem[] = [{
 }, {
   image: eventKaraoke,
   title: "Festivallerimiz",
-  emoji: "🎤"
+  emoji: "🎉"
 }, {
   image: eventCafe,
   title: "Speaking Clublarımız",
