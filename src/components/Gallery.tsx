@@ -16,7 +16,7 @@ const galleryItems: GalleryItem[] = [{
   emoji: "🎤"
 }, {
   image: eventCafe,
-  title: "Fransızca Kahve Saati",
+  title: "Speaking Clublarımız",
   emoji: "☕"
 }];
 const Gallery = () => {
