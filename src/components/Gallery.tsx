@@ -12,7 +12,7 @@ const galleryItems: GalleryItem[] = [{
   emoji: "📚"
 }, {
   image: eventKaraoke,
-  title: "Kültürlerarası Karaoke",
+  title: "Festivallerimiz",
   emoji: "🎤"
 }, {
   image: eventCafe,
