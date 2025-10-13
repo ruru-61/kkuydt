@@ -8,7 +8,7 @@ interface GalleryItem {
 }
 const galleryItems: GalleryItem[] = [{
   image: eventStudy,
-  title: "Dil Öğrenme Atölyeleri",
+  title: "Eğitimlerimiz",
   emoji: "📚"
 }, {
   image: eventKaraoke,
