@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import eventStudy from "@/assets/event-study.jpg";
 import eventKaraoke from "@/assets/event-karaoke.jpg";
 import eventCafe from "@/assets/event-cafe.jpg";
@@ -6,29 +6,89 @@ import studyEvent1 from "@/assets/study-event-1.jpg";
 import studyEvent2 from "@/assets/study-event-2.jpg";
 import studyEvent3 from "@/assets/study-event-3.jpg";
 import studyEvent4 from "@/assets/study-event-4.jpg";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+
 interface GalleryItem {
   image: string;
   title: string;
   emoji: string;
+  popupImages: string[];
 }
+
 const galleryItems: GalleryItem[] = [{
   image: eventStudy,
   title: "Eğitimlerimiz",
-  emoji: "📚"
+  emoji: "📚",
+  popupImages: [studyEvent1, studyEvent2, studyEvent3, studyEvent4]
 }, {
   image: eventKaraoke,
   title: "Festivallerimiz",
-  emoji: "🎉"
+  emoji: "🎉",
+  popupImages: [studyEvent2, studyEvent4, studyEvent1, studyEvent3]
 }, {
   image: eventCafe,
   title: "Speaking Clublarımız",
-  emoji: "☕"
+  emoji: "☕",
+  popupImages: [studyEvent3, studyEvent1, studyEvent4, studyEvent2]
 }];
-const studyGalleryImages = [studyEvent1, studyEvent2, studyEvent3, studyEvent4];
 const Gallery = () => {
-  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
-  return <section className="py-20 px-4 bg-background">
+  const [activePopup, setActivePopup] = useState<number | null>(null);
+  const [popupPosition, setPopupPosition] = useState({ top: 0, left: 0 });
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const handleMouseEnter = (index: number, event: React.MouseEvent<HTMLDivElement>) => {
+    if (isMobile) return;
+    
+    const rect = event.currentTarget.getBoundingClientRect();
+    const isLastItem = index === galleryItems.length - 1;
+    
+    setPopupPosition({
+      top: rect.top + window.scrollY,
+      left: isLastItem ? rect.left - 320 : rect.right + 20
+    });
+    setActivePopup(index);
+  };
+
+  const handleMouseLeave = () => {
+    if (isMobile) return;
+    setActivePopup(null);
+  };
+
+  const handleMobileClick = (index: number, event: React.MouseEvent<HTMLDivElement>) => {
+    if (!isMobile) return;
+    
+    event.stopPropagation();
+    const rect = event.currentTarget.getBoundingClientRect();
+    
+    setPopupPosition({
+      top: rect.top + window.scrollY + rect.height / 2 - 150,
+      left: window.innerWidth / 2 - 150
+    });
+    setActivePopup(activePopup === index ? null : index);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (isMobile && activePopup !== null) {
+        const target = e.target as HTMLElement;
+        if (!target.closest('.popup-gallery') && !target.closest('.gallery-item')) {
+          setActivePopup(null);
+        }
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [isMobile, activePopup]);
+
+  return <section className="py-20 px-4 bg-background relative">
       <div className="container mx-auto max-w-7xl">
         <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center leading-tight sm:leading-tight md:leading-[1.15] mb-2 sm:mb-4 px-4">
           <span className="block gradient-primary bg-clip-text break-words text-slate-50">Geçmiş Etkinlikler</span>
@@ -38,7 +98,7 @@ const Gallery = () => {
         </p>
         
         <div className="grid md:grid-cols-3 gap-8">
-          {galleryItems.map((item, index) => <div key={index} className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer" onClick={() => index === 0 && setIsGalleryOpen(true)}>
+          {galleryItems.map((item, index) => <div key={index} ref={el => itemRefs.current[index] = el} className="gallery-item group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer" onMouseEnter={(e) => handleMouseEnter(index, e)} onMouseLeave={handleMouseLeave} onClick={(e) => handleMobileClick(index, e)}>
               <img src={item.image} alt={item.title} className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4 sm:p-6">
                 <div className="text-center text-card">
@@ -56,16 +116,38 @@ const Gallery = () => {
         </div>
       </div>
       
-      {/* Popup Gallery Modal */}
-      <Dialog open={isGalleryOpen} onOpenChange={setIsGalleryOpen}>
-        <DialogContent className="sm:max-w-md">
-          <div className="grid grid-cols-2 gap-4 p-2">
-            {studyGalleryImages.map((img, imgIndex) => <div key={imgIndex} className="relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-                <img src={img} alt={`Eğitim etkinliği ${imgIndex + 1}`} className="w-full h-40 object-cover" />
-              </div>)}
+      {/* Floating Popup Galleries */}
+      {activePopup !== null && (
+        <div 
+          className="popup-gallery fixed z-50 pointer-events-none"
+          style={{
+            top: `${popupPosition.top}px`,
+            left: `${popupPosition.left}px`,
+            animation: 'fade-in 0.3s ease-out, scale-in 0.2s ease-out'
+          }}
+        >
+          <div className="bg-background/95 backdrop-blur-sm rounded-xl shadow-2xl p-4 border border-primary/20 pointer-events-auto">
+            <div className="grid grid-cols-2 gap-3 w-[300px]">
+              {galleryItems[activePopup].popupImages.map((img, imgIndex) => (
+                <div 
+                  key={imgIndex} 
+                  className="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  style={{
+                    animation: `fade-in 0.3s ease-out ${imgIndex * 0.05}s backwards`
+                  }}
+                >
+                  <img 
+                    src={img} 
+                    alt={`${galleryItems[activePopup].title} ${imgIndex + 1}`} 
+                    className="w-full h-32 object-cover" 
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-        </DialogContent>
-      </Dialog>
+        </div>
+      )}
     </section>;
 };
+
 export default Gallery;
