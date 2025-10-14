@@ -26,25 +26,19 @@ const galleryItems: GalleryItem[] = [{
   emoji: "☕"
 }];
 const studyGalleryImages = [studyEvent1, studyEvent2, studyEvent3, studyEvent4];
-
 const Gallery = () => {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
-  
   return <section className="py-20 px-4 bg-background">
       <div className="container mx-auto max-w-7xl">
         <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center leading-tight sm:leading-tight md:leading-[1.15] mb-2 sm:mb-4 px-4">
-          <span className="block gradient-primary bg-clip-text break-words">Geçmiş Etkinlikler</span>
+          <span className="block gradient-primary bg-clip-text break-words text-slate-50">Geçmiş Etkinlikler</span>
         </h2>
         <p className="text-center text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed mb-10 md:mb-16 max-w-2xl mx-auto px-4">
           Unutulmaz anılarımızdan kareler 📸
         </p>
         
         <div className="grid md:grid-cols-3 gap-8">
-          {galleryItems.map((item, index) => <div 
-              key={index} 
-              className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer"
-              onClick={() => index === 0 && setIsGalleryOpen(true)}
-            >
+          {galleryItems.map((item, index) => <div key={index} className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer" onClick={() => index === 0 && setIsGalleryOpen(true)}>
               <img src={item.image} alt={item.title} className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4 sm:p-6">
                 <div className="text-center text-card">
@@ -66,15 +60,9 @@ const Gallery = () => {
       <Dialog open={isGalleryOpen} onOpenChange={setIsGalleryOpen}>
         <DialogContent className="sm:max-w-md">
           <div className="grid grid-cols-2 gap-4 p-2">
-            {studyGalleryImages.map((img, imgIndex) => (
-              <div key={imgIndex} className="relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-                <img 
-                  src={img} 
-                  alt={`Eğitim etkinliği ${imgIndex + 1}`}
-                  className="w-full h-40 object-cover"
-                />
-              </div>
-            ))}
+            {studyGalleryImages.map((img, imgIndex) => <div key={imgIndex} className="relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                <img src={img} alt={`Eğitim etkinliği ${imgIndex + 1}`} className="w-full h-40 object-cover" />
+              </div>)}
           </div>
         </DialogContent>
       </Dialog>
