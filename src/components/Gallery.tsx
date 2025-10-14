@@ -32,10 +32,10 @@ const Gallery = () => {
   
   return <section className="py-20 px-4 bg-background">
       <div className="container mx-auto max-w-7xl">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4">
-          <span className="gradient-primary bg-clip-text text-slate-50">Geçmiş Etkinlikler</span>
+        <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center leading-tight sm:leading-tight md:leading-[1.15] mb-2 sm:mb-4 px-4">
+          <span className="block gradient-primary bg-clip-text break-words">Geçmiş Etkinlikler</span>
         </h2>
-        <p className="text-center text-base sm:text-lg md:text-xl text-muted-foreground mb-12 md:mb-16 px-4">
+        <p className="text-center text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed mb-10 md:mb-16 max-w-2xl mx-auto px-4">
           Unutulmaz anılarımızdan kareler 📸
         </p>
         
