@@ -43,8 +43,7 @@ const Gallery = () => {
           {galleryItems.map((item, index) => <div 
               key={index} 
               className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer"
-              onMouseEnter={() => index === 0 && setIsGalleryOpen(true)}
-              onMouseLeave={() => index === 0 && setIsGalleryOpen(false)}
+              onClick={() => index === 0 && setIsGalleryOpen(true)}
             >
               <img src={item.image} alt={item.title} className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-6">
