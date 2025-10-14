@@ -41,8 +41,8 @@ const upcomingEvents: Event[] = [{
 const Events = () => {
   return <section className="py-20 px-4 bg-muted/30">
       <div className="container mx-auto max-w-7xl">
-        <h2 className="text-5xl md:text-6xl font-bold text-center mb-4 text-black">
-          <span className="gradient-secondary bg-clip-text text-slate-50">Yaklaşan Etkinlikler</span>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 leading-tight tracking-tight text-foreground">
+          <span className="gradient-secondary bg-clip-text text-slate-50 block break-words">Yaklaşan Etkinlikler</span>
         </h2>
         <p className="text-center text-xl mb-16 text-black">
           Heyecan dolu programlarımıza katılın! 🎉
