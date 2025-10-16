@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import eventStudy from "@/assets/event-study.jpg";
+import eventStudy from "@/assets/education-session.jpg";
 import eventKaraoke from "@/assets/event-karaoke.jpg";
 import eventCafe from "@/assets/event-cafe.jpg";
 import studyEvent1 from "@/assets/study-event-1.jpg";
