@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import eventStudy from "@/assets/education-session.jpg";
-import eventKaraoke from "@/assets/event-karaoke.jpg";
+import eventFestival from "@/assets/event-festival.jpg";
 import eventCafe from "@/assets/event-cafe.jpg";
 import studyEvent1 from "@/assets/study-event-1.jpg";
 import studyEvent2 from "@/assets/study-event-2.jpg";
@@ -20,7 +20,7 @@ const galleryItems: GalleryItem[] = [{
   emoji: "📚",
   popupImages: [studyEvent1, studyEvent2, studyEvent3, studyEvent4]
 }, {
-  image: eventKaraoke,
+  image: eventFestival,
   title: "Festivallerimiz",
   emoji: "🎉",
   popupImages: [studyEvent2, studyEvent4, studyEvent1, studyEvent3]
