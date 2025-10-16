@@ -1,4 +1,6 @@
 import { useState, useRef, useEffect } from "react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Upload } from "lucide-react";
 import eventStudy from "@/assets/education-session.jpg";
 import eventFestival from "@/assets/event-festival.jpg";
 import eventCafe from "@/assets/event-cafe.jpg";
@@ -33,6 +35,7 @@ const galleryItems: GalleryItem[] = [{
 const Gallery = () => {
   const [activePopup, setActivePopup] = useState<number | null>(null);
   const [popupPosition, setPopupPosition] = useState({ top: 0, left: 0 });
+  const [openGallery, setOpenGallery] = useState<number | null>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -65,13 +68,13 @@ const Gallery = () => {
     if (!isMobile) return;
     
     event.stopPropagation();
-    const rect = event.currentTarget.getBoundingClientRect();
-    
-    setPopupPosition({
-      top: rect.top + window.scrollY + rect.height / 2 - 150,
-      left: window.innerWidth / 2 - 150
-    });
-    setActivePopup(activePopup === index ? null : index);
+    setOpenGallery(index);
+  };
+
+  const handleItemClick = (index: number) => {
+    if (!isMobile) {
+      setOpenGallery(index);
+    }
   };
 
   useEffect(() => {
@@ -98,7 +101,10 @@ const Gallery = () => {
         </p>
         
         <div className="grid md:grid-cols-3 gap-8">
-          {galleryItems.map((item, index) => <div key={index} ref={el => itemRefs.current[index] = el} className="gallery-item group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer" onMouseEnter={(e) => handleMouseEnter(index, e)} onMouseLeave={handleMouseLeave} onClick={(e) => handleMobileClick(index, e)}>
+          {galleryItems.map((item, index) => <div key={index} ref={el => itemRefs.current[index] = el} className="gallery-item group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer" onMouseEnter={(e) => handleMouseEnter(index, e)} onMouseLeave={handleMouseLeave} onClick={(e) => {
+            handleMobileClick(index, e);
+            handleItemClick(index);
+          }}>
               <img src={item.image} alt={item.title} className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4 sm:p-6">
                 <div className="text-center text-card">
@@ -116,8 +122,8 @@ const Gallery = () => {
         </div>
       </div>
       
-      {/* Floating Popup Galleries */}
-      {activePopup !== null && (
+      {/* Floating Popup Galleries - Desktop Hover Only */}
+      {activePopup !== null && !isMobile && (
         <div 
           className="popup-gallery fixed z-50 pointer-events-none"
           style={{
@@ -146,6 +152,43 @@ const Gallery = () => {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Photo Gallery Modal */}
+      {openGallery !== null && (
+        <Dialog open={openGallery !== null} onOpenChange={() => setOpenGallery(null)}>
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle className="text-2xl flex items-center gap-2">
+                <span className="text-3xl">{galleryItems[openGallery].emoji}</span>
+                {galleryItems[openGallery].title}
+              </DialogTitle>
+            </DialogHeader>
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+              {galleryItems[openGallery].popupImages.map((img, imgIndex) => (
+                <div 
+                  key={imgIndex} 
+                  className="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105"
+                >
+                  <img 
+                    src={img} 
+                    alt={`${galleryItems[openGallery].title} ${imgIndex + 1}`} 
+                    className="w-full h-48 object-cover" 
+                  />
+                </div>
+              ))}
+              
+              {/* Add More Photos Button */}
+              <button className="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-dashed border-primary/30 bg-muted/30 hover:bg-muted/50 flex flex-col items-center justify-center h-48 gap-2 group">
+                <Upload className="w-8 h-8 text-primary/50 group-hover:text-primary transition-colors" />
+                <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+                  Add Photos
+                </span>
+              </button>
+            </div>
+          </DialogContent>
+        </Dialog>
       )}
     </section>;
 };
