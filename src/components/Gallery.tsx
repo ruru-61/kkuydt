@@ -8,6 +8,16 @@ import studyEvent1 from "@/assets/study-event-1.jpg";
 import studyEvent2 from "@/assets/study-event-2.jpg";
 import studyEvent3 from "@/assets/study-event-3.jpg";
 import studyEvent4 from "@/assets/study-event-4.jpg";
+import festival1 from "@/assets/festival-1.jpg";
+import festival2 from "@/assets/festival-2.jpg";
+import festival3 from "@/assets/festival-3.jpg";
+import festival4 from "@/assets/festival-4.jpg";
+import festival5 from "@/assets/festival-5.jpg";
+import festival6 from "@/assets/festival-6.jpg";
+import festival7 from "@/assets/festival-7.jpg";
+import festival8 from "@/assets/festival-8.jpg";
+import festival9 from "@/assets/festival-9.jpg";
+import festival10 from "@/assets/festival-10.jpg";
 
 interface GalleryItem {
   image: string;
@@ -25,7 +35,7 @@ const galleryItems: GalleryItem[] = [{
   image: eventFestival,
   title: "Festivallerimiz",
   emoji: "🎉",
-  popupImages: [studyEvent2, studyEvent4, studyEvent1, studyEvent3]
+  popupImages: [festival1, festival2, festival3, festival4, festival5, festival6, festival7, festival8, festival9, festival10]
 }, {
   image: eventCafe,
   title: "Speaking Clublarımız",
