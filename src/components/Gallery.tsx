@@ -175,7 +175,11 @@ const Gallery = () => {
               </DialogTitle>
             </DialogHeader>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+            <div className={`grid gap-4 mt-4 ${
+              galleryItems[openGallery].popupImages.length <= 4 
+                ? 'grid-cols-1 md:grid-cols-2' 
+                : 'grid-cols-2 md:grid-cols-3'
+            }`}>
               {galleryItems[openGallery].popupImages.map((img, imgIndex) => (
                 <div 
                   key={imgIndex} 
@@ -184,7 +188,11 @@ const Gallery = () => {
                   <img 
                     src={img} 
                     alt={`${galleryItems[openGallery].title} ${imgIndex + 1}`} 
-                    className="w-full h-48 object-cover" 
+                    className={`w-full object-cover ${
+                      galleryItems[openGallery].popupImages.length <= 4 
+                        ? 'h-64 md:h-80' 
+                        : 'h-48'
+                    }`}
                   />
                 </div>
               ))}
