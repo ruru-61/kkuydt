@@ -206,14 +206,6 @@ const Gallery = () => {
                   />
                 </div>
               ))}
-              
-              {/* Add More Photos Button */}
-              <button className="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-dashed border-primary/30 bg-muted/30 hover:bg-muted/50 flex flex-col items-center justify-center h-48 gap-2 group">
-                <Upload className="w-8 h-8 text-primary/50 group-hover:text-primary transition-colors" />
-                <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
-                  Add Photos
-                </span>
-              </button>
             </div>
           </DialogContent>
         </Dialog>
