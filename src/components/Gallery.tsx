@@ -18,6 +18,16 @@ import festival7 from "@/assets/festival-7.jpg";
 import festival8 from "@/assets/festival-8.jpg";
 import festival9 from "@/assets/festival-9.jpg";
 import festival10 from "@/assets/festival-10.jpg";
+import festival11 from "@/assets/festival-11.jpg";
+import festival12 from "@/assets/festival-12.jpg";
+import festival13 from "@/assets/festival-13.jpg";
+import festival14 from "@/assets/festival-14.jpg";
+import festival15 from "@/assets/festival-15.jpg";
+import festival16 from "@/assets/festival-16.jpg";
+import festival17 from "@/assets/festival-17.jpg";
+import festival18 from "@/assets/festival-18.jpg";
+import festival19 from "@/assets/festival-19.jpg";
+import festival20 from "@/assets/festival-20.jpg";
 import speakingClub1 from "@/assets/speaking-club-1.jpg";
 import speakingClub2 from "@/assets/speaking-club-2.jpg";
 import speakingClub3 from "@/assets/speaking-club-3.jpg";
@@ -45,7 +55,7 @@ const galleryItems: GalleryItem[] = [{
   image: eventFestival,
   title: "Festivallerimiz",
   emoji: "🎉",
-  popupImages: [festival1, festival2, festival3, festival4, festival5, festival6, festival7, festival8, festival9, festival10]
+  popupImages: [festival1, festival2, festival3, festival4, festival5, festival6, festival7, festival8, festival9, festival10, festival11, festival12, festival13, festival14, festival15, festival16, festival17, festival18, festival19, festival20]
 }, {
   image: eventCafe,
   title: "Speaking Clublarımız",
