@@ -49,7 +49,7 @@ const Events = () => {
         </p>
         
         <div className="grid md:grid-cols-2 gap-8">
-          {upcomingEvents.map((event, index) => <Card key={index} className={`border-2 hover:scale-105 transition-all duration-300 hover:shadow-2xl group cursor-pointer ${event.color === 'primary' ? 'border-primary/20 hover:border-primary' : event.color === 'secondary' ? 'border-secondary/20 hover:border-secondary' : event.color === 'accent' ? 'border-accent/20 hover:border-accent' : 'border-highlight/20 hover:border-highlight'}`}>
+          {upcomingEvents.slice(0, 2).map((event, index) => <Card key={index} className={`border-2 hover:scale-105 transition-all duration-300 hover:shadow-2xl group cursor-pointer ${event.color === 'primary' ? 'border-primary/20 hover:border-primary' : event.color === 'secondary' ? 'border-secondary/20 hover:border-secondary' : event.color === 'accent' ? 'border-accent/20 hover:border-accent' : 'border-highlight/20 hover:border-highlight'}`}>
               <CardHeader>
                 <CardTitle className="text-2xl flex items-start justify-between gap-4">
                   <span className={event.color === 'primary' ? 'text-primary' : event.color === 'secondary' ? 'text-secondary' : event.color === 'accent' ? 'text-accent' : 'text-highlight'}>
