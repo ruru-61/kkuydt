@@ -18,7 +18,7 @@ const upcomingEvents: Event[] = [{
   color: "primary"
 }, {
   title: "Speaking Club 🗣️",
-  date: "8 Ekim 2024",
+  date: "22 Ekim 2025",
   location: "Microlot Café",
   description: "İngilizce, Fransızca, Arapça ve Türkçe masalarında konuşma pratiği yapın! Farklı dil seviyelerinden öğrencilerle tanışın.",
   participants: "İngilizce • Fransızca • Arapça • Türkçe",
