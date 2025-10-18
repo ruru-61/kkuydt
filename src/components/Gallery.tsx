@@ -39,6 +39,8 @@ import speakingClub7 from "@/assets/speaking-club-7.jpg";
 import speakingClub8 from "@/assets/speaking-club-8.jpg";
 import speakingClub9 from "@/assets/speaking-club-9.jpg";
 import speakingClub10 from "@/assets/speaking-club-10.jpg";
+import speakingClub11 from "@/assets/speaking-club-11.jpg";
+import speakingClub12 from "@/assets/speaking-club-12.jpg";
 
 interface GalleryItem {
   image: string;
@@ -61,7 +63,7 @@ const galleryItems: GalleryItem[] = [{
   image: eventCafe,
   title: "Speaking Clublarımız",
   emoji: "☕",
-  popupImages: [speakingClub1, speakingClub2, speakingClub3, speakingClub4, speakingClub5, speakingClub6, speakingClub7, speakingClub8, speakingClub9, speakingClub10]
+  popupImages: [speakingClub1, speakingClub2, speakingClub3, speakingClub4, speakingClub5, speakingClub6, speakingClub7, speakingClub8, speakingClub9, speakingClub10, speakingClub11, speakingClub12]
 }];
 const Gallery = () => {
   const [activePopup, setActivePopup] = useState<number | null>(null);
