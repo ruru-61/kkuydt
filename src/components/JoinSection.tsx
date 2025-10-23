@@ -39,7 +39,7 @@ const JoinSection = () => {
         
         <div className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
           <div className="text-center">
-            <p className="text-4xl md:text-5xl font-bold text-card drop-shadow-lg">200+</p>
+            <p className="text-4xl md:text-5xl font-bold text-card drop-shadow-lg">350+</p>
             <p className="text-card/80 mt-2 drop-shadow-lg">Aktif Üye</p>
           </div>
           <div className="text-center">
