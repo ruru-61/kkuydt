@@ -23,10 +23,7 @@ const Footer = () => {
                 <Mail className="w-5 h-5 mt-0.5 text-primary" />
                 <a href="mailto:info@ydtoplulugu.edu.tr" className="hover:text-primary transition-colors">contactkkuydt@gmail.com</a>
               </div>
-              <div className="flex items-start gap-2">
-                <Phone className="w-5 h-5 mt-0.5 text-accent" />
-                <span>0545 449 09 55</span>
-              </div>
+              
             </div>
           </div>
           
