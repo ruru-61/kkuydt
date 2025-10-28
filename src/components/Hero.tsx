@@ -33,7 +33,7 @@ const Hero = () => {
             </div>
             <div className="flex items-center gap-2 bg-card/20 backdrop-blur-sm px-6 py-3 rounded-full">
               <Users className="w-6 h-6" />
-              <span>200+ Aktif Üye</span>
+              <span>350+ Aktif Üye</span>
             </div>
             <div className="flex items-center gap-2 bg-card/20 backdrop-blur-sm px-6 py-3 rounded-full">
               <Globe className="w-6 h-6" />
