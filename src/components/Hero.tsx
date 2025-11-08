@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Languages, Users } from "lucide-react";
+import { Globe, Languages, Users } from "lucide-react";
 import heroImage from "@/assets/hero-background.jpg";
 import ydtLogo from "@/assets/ydt-logo.png";
 const Hero = () => {
@@ -37,7 +37,7 @@ const Hero = () => {
               <span>350+ Aktif Üye</span>
             </div>
             <div className="flex items-center gap-2 bg-card/20 backdrop-blur-sm px-6 py-3 rounded-full">
-              <img src={ydtLogo} alt="YDT" className="w-6 h-6 object-contain" />
+              <Globe className="w-6 h-6" />
               <span>6+ Yıllık Deneyim</span>
             </div>
           </div>
