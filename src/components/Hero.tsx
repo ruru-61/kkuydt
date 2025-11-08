@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Globe, Languages, Users } from "lucide-react";
-import heroImage from "@/assets/hero-illustration.jpg";
+import heroImage from "@/assets/hero-background.jpg";
 const Hero = () => {
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-hero">
       <div className="absolute inset-0 opacity-20">
