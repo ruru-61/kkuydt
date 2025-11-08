@@ -16,8 +16,7 @@ const MissionVision = () => {
               <CardTitle className="text-3xl text-primary">Misyonumuz</CardTitle>
             </CardHeader>
             <CardContent className="text-lg leading-relaxed text-foreground/80">
-              Farklı kültürlerden öğrencileri bir araya getirerek dil öğrenme sürecini sosyal ve eğlenceli hale getirmek. 
-              Öğrencilerimizin hem akademik hem de sosyal gelişimlerine katkıda bulunarak küresel vatandaşlar yetiştirmek.
+              Fark yaratmak.
             </CardContent>
           </Card>
           
