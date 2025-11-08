@@ -9,15 +9,15 @@ const Hero = () => {
       </div>
       
       {/* Floating decorative elements */}
-      <div className="absolute top-20 left-10 animate-float">
-        <div className="w-20 h-20 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center p-2">
+      <div className="absolute top-4 left-4 md:top-10 md:left-10 lg:top-20 lg:left-10 animate-float">
+        <div className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center p-1.5 md:p-2">
           <img src={ydtLogo} alt="YDT Logo" className="w-full h-full object-contain" />
         </div>
       </div>
       
-      <div className="absolute bottom-32 right-20 animate-float-delayed">
-        <div className="w-24 h-24 rounded-full bg-secondary/30 backdrop-blur-sm flex items-center justify-center">
-          <Languages className="w-12 h-12 text-card" />
+      <div className="absolute bottom-20 right-4 md:bottom-24 md:right-10 lg:bottom-32 lg:right-20 animate-float-delayed">
+        <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full bg-secondary/30 backdrop-blur-sm flex items-center justify-center">
+          <Languages className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-card" />
         </div>
       </div>
       
