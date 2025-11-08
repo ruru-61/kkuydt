@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Globe, Languages, Users } from "lucide-react";
+import { Languages, Users } from "lucide-react";
 import heroImage from "@/assets/hero-background.jpg";
+import ydtLogo from "@/assets/ydt-logo.png";
 const Hero = () => {
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-hero">
       <div className="absolute inset-0 opacity-20">
@@ -9,8 +10,8 @@ const Hero = () => {
       
       {/* Floating decorative elements */}
       <div className="absolute top-20 left-10 animate-float">
-        <div className="w-20 h-20 rounded-full bg-highlight/30 backdrop-blur-sm flex items-center justify-center">
-          <Globe className="w-10 h-10 text-card" />
+        <div className="w-20 h-20 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center p-2">
+          <img src={ydtLogo} alt="YDT Logo" className="w-full h-full object-contain" />
         </div>
       </div>
       
@@ -36,7 +37,7 @@ const Hero = () => {
               <span>350+ Aktif Üye</span>
             </div>
             <div className="flex items-center gap-2 bg-card/20 backdrop-blur-sm px-6 py-3 rounded-full">
-              <Globe className="w-6 h-6" />
+              <img src={ydtLogo} alt="YDT" className="w-6 h-6 object-contain" />
               <span>6+ Yıllık Deneyim</span>
             </div>
           </div>
