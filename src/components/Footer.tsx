@@ -1,9 +1,10 @@
-import { Instagram, Mail, Phone, Linkedin } from "lucide-react";
+import { Instagram, Mail, Linkedin } from "lucide-react";
 import xLogo from "@/assets/x-logo.png";
+import ContactForm from "@/components/ContactForm";
 const Footer = () => {
   return <footer className="bg-foreground/5 py-12 px-4">
       <div className="container mx-auto max-w-6xl">
-        <div className="grid md:grid-cols-3 gap-12 mb-8">
+        <div className="grid md:grid-cols-4 gap-12 mb-8">
           {/* About */}
           <div>
             <h3 className="text-2xl font-bold mb-4 text-black">
@@ -16,15 +17,15 @@ const Footer = () => {
           </div>
           
           {/* Contact */}
-          <div>
+          <div className="md:col-span-2">
             <h4 className="text-xl font-bold mb-4 text-black">İletişim</h4>
-            <div className="space-y-3 text-muted-foreground">
+            <div className="mb-4 text-muted-foreground">
               <div className="flex items-start gap-2">
                 <Mail className="w-5 h-5 mt-0.5 text-primary" />
-                <a href="mailto:info@ydtoplulugu.edu.tr" className="hover:text-primary transition-colors">contactkkuydt@gmail.com</a>
+                <a href="mailto:contactkkuydt@gmail.com" className="hover:text-primary transition-colors">contactkkuydt@gmail.com</a>
               </div>
-              
             </div>
+            <ContactForm />
           </div>
           
           {/* Social Media */}
