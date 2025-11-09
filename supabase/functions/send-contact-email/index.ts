@@ -1,7 +1,4 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
-import { Resend } from "npm:resend@4.0.0";
-
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -26,24 +23,44 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Received contact form submission:", { name, email });
 
-    // Send email to community
-    const emailResponse = await resend.emails.send({
-      from: "YDT İletişim <onboarding@resend.dev>",
-      to: ["contactkkuydt@gmail.com"],
-      replyTo: email,
-      subject: `Yeni İletişim Mesajı: ${name}`,
-      html: `
-        <h2>Yeni İletişim Formu Mesajı</h2>
-        <p><strong>İsim:</strong> ${name}</p>
-        <p><strong>E-posta:</strong> ${email}</p>
-        <p><strong>Mesaj:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
-      `,
+    const resendApiKey = Deno.env.get("RESEND_API_KEY");
+    
+    if (!resendApiKey) {
+      throw new Error("RESEND_API_KEY is not set");
+    }
+
+    // Send email using Resend API
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${resendApiKey}`,
+      },
+      body: JSON.stringify({
+        from: "YDT İletişim <onboarding@resend.dev>",
+        to: ["contactkkuydt@gmail.com"],
+        reply_to: email,
+        subject: `Yeni İletişim Mesajı: ${name}`,
+        html: `
+          <h2>Yeni İletişim Formu Mesajı</h2>
+          <p><strong>İsim:</strong> ${name}</p>
+          <p><strong>E-posta:</strong> ${email}</p>
+          <p><strong>Mesaj:</strong></p>
+          <p>${message.replace(/\n/g, '<br>')}</p>
+        `,
+      }),
     });
 
-    console.log("Email sent successfully:", emailResponse);
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(JSON.stringify(error));
+    }
 
-    return new Response(JSON.stringify(emailResponse), {
+    const data = await response.json();
+
+    console.log("Email sent successfully:", data);
+
+    return new Response(JSON.stringify(data), {
       status: 200,
       headers: {
         "Content-Type": "application/json",

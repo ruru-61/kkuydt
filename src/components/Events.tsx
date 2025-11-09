@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, Users } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 interface Event {
   title: string;
   date: string;
@@ -39,6 +40,18 @@ const upcomingEvents: Event[] = [{
   color: "highlight"
 }];
 const Events = () => {
+  const isEventPassed = (dateString: string) => {
+    const [day, month, year] = dateString.split(' ');
+    const monthMap: { [key: string]: number } = {
+      'Ocak': 0, 'Şubat': 1, 'Mart': 2, 'Nisan': 3, 'Mayıs': 4, 'Haziran': 5,
+      'Temmuz': 6, 'Ağustos': 7, 'Eylül': 8, 'Ekim': 9, 'Kasım': 10, 'Aralık': 11
+    };
+    const eventDate = new Date(parseInt(year), monthMap[month], parseInt(day));
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return eventDate < today;
+  };
+
   return <section className="py-20 px-4 bg-muted/30">
       <div className="container mx-auto max-w-7xl">
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 leading-tight tracking-tight text-foreground">
@@ -49,7 +62,14 @@ const Events = () => {
         </p>
         
         <div className="grid md:grid-cols-2 gap-8">
-          {upcomingEvents.slice(0, 2).map((event, index) => <Card key={index} className={`border-2 hover:scale-105 transition-all duration-300 hover:shadow-2xl group cursor-pointer ${event.color === 'primary' ? 'border-primary/20 hover:border-primary' : event.color === 'secondary' ? 'border-secondary/20 hover:border-secondary' : event.color === 'accent' ? 'border-accent/20 hover:border-accent' : 'border-highlight/20 hover:border-highlight'}`}>
+          {upcomingEvents.slice(0, 2).map((event, index) => {
+            const isPassed = isEventPassed(event.date);
+            return <Card key={index} className={`border-2 hover:scale-105 transition-all duration-300 hover:shadow-2xl group cursor-pointer relative ${isPassed ? 'opacity-50' : ''} ${event.color === 'primary' ? 'border-primary/20 hover:border-primary' : event.color === 'secondary' ? 'border-secondary/20 hover:border-secondary' : event.color === 'accent' ? 'border-accent/20 hover:border-accent' : 'border-highlight/20 hover:border-highlight'}`}>
+              {isPassed && (
+                <Badge className="absolute top-4 right-4 bg-red-600 hover:bg-red-700 text-white font-bold text-lg px-4 py-2 rotate-12 shadow-lg border-2 border-red-700 z-10">
+                  PASSED
+                </Badge>
+              )}
               <CardHeader>
                 <CardTitle className="text-2xl flex items-start justify-between gap-4">
                   <span className={event.color === 'primary' ? 'text-primary' : event.color === 'secondary' ? 'text-secondary' : event.color === 'accent' ? 'text-accent' : 'text-highlight'}>
@@ -77,7 +97,8 @@ const Events = () => {
                 
                 
               </CardContent>
-            </Card>)}
+            </Card>;
+          })}
         </div>
       </div>
     </section>;
