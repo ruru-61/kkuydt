@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Upload } from "lucide-react";
+import { Upload, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import eventStudy from "@/assets/education-session.jpg";
 import eventFestival from "@/assets/event-festival.jpg";
 import eventCafe from "@/assets/event-cafe.jpg";
@@ -69,6 +70,7 @@ const Gallery = () => {
   const [activePopup, setActivePopup] = useState<number | null>(null);
   const [popupPosition, setPopupPosition] = useState({ top: 0, left: 0 });
   const [openGallery, setOpenGallery] = useState<number | null>(null);
+  const [lightboxImage, setLightboxImage] = useState<{ galleryIndex: number; imageIndex: number } | null>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -109,6 +111,47 @@ const Gallery = () => {
       setOpenGallery(index);
     }
   };
+
+  const openLightbox = (galleryIndex: number, imageIndex: number) => {
+    setLightboxImage({ galleryIndex, imageIndex });
+  };
+
+  const closeLightbox = () => {
+    setLightboxImage(null);
+  };
+
+  const navigateLightbox = (direction: 'prev' | 'next') => {
+    if (!lightboxImage) return;
+    
+    const currentGallery = galleryItems[lightboxImage.galleryIndex];
+    const totalImages = currentGallery.popupImages.length;
+    let newIndex = lightboxImage.imageIndex;
+    
+    if (direction === 'prev') {
+      newIndex = lightboxImage.imageIndex > 0 ? lightboxImage.imageIndex - 1 : totalImages - 1;
+    } else {
+      newIndex = lightboxImage.imageIndex < totalImages - 1 ? lightboxImage.imageIndex + 1 : 0;
+    }
+    
+    setLightboxImage({ ...lightboxImage, imageIndex: newIndex });
+  };
+
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (!lightboxImage) return;
+      
+      if (e.key === 'ArrowLeft') {
+        navigateLightbox('prev');
+      } else if (e.key === 'ArrowRight') {
+        navigateLightbox('next');
+      } else if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [lightboxImage]);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -206,7 +249,8 @@ const Gallery = () => {
               {galleryItems[openGallery].popupImages.map((img, imgIndex) => (
                 <div 
                   key={imgIndex} 
-                  className="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  className="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer group"
+                  onClick={() => openLightbox(openGallery, imgIndex)}
                 >
                   <img 
                     src={img} 
@@ -217,8 +261,59 @@ const Gallery = () => {
                         : 'h-48'
                     }`}
                   />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                    <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium">
+                      Büyütmek için tıkla
+                    </span>
+                  </div>
                 </div>
               ))}
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
+
+      {/* Lightbox Modal */}
+      {lightboxImage !== null && (
+        <Dialog open={lightboxImage !== null} onOpenChange={closeLightbox}>
+          <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-black/95 border-none">
+            <div className="relative w-full h-[95vh] flex items-center justify-center">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="absolute top-4 right-4 z-50 text-white hover:bg-white/20"
+                onClick={closeLightbox}
+              >
+                <X className="h-6 w-6" />
+              </Button>
+
+              <Button
+                variant="ghost"
+                size="icon"
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-50 text-white hover:bg-white/20"
+                onClick={() => navigateLightbox('prev')}
+              >
+                <ChevronLeft className="h-8 w-8" />
+              </Button>
+
+              <Button
+                variant="ghost"
+                size="icon"
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-50 text-white hover:bg-white/20"
+                onClick={() => navigateLightbox('next')}
+              >
+                <ChevronRight className="h-8 w-8" />
+              </Button>
+
+              <img
+                src={galleryItems[lightboxImage.galleryIndex].popupImages[lightboxImage.imageIndex]}
+                alt={`${galleryItems[lightboxImage.galleryIndex].title} ${lightboxImage.imageIndex + 1}`}
+                className="max-w-full max-h-full object-contain"
+              />
+
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-sm bg-black/50 px-4 py-2 rounded-full">
+                {lightboxImage.imageIndex + 1} / {galleryItems[lightboxImage.galleryIndex].popupImages.length}
+              </div>
             </div>
           </DialogContent>
         </Dialog>
