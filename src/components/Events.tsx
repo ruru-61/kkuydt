@@ -18,7 +18,7 @@ const upcomingEvents: Event[] = [{
   participants: "İngilizce • Fransızca • Arapça • Türkçe",
   color: "primary"
 }, {
-  title: "Suit Up!",
+  title: "Speaking Club 🗣️",
   date: "12 Kasım 2025",
   location: "Microlot Café",
   description: "İngilizce, Fransızca, Arapça ve Türkçe masalarında konuşma pratiği yapın! Farklı dil seviyelerinden öğrencilerle tanışın.",
