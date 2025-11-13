@@ -66,6 +66,36 @@ const Events = () => {
     return eventDate < today;
   };
 
+  const getEventDate = (dateString: string) => {
+    const [day, month, year] = dateString.split(' ');
+    const monthMap: { [key: string]: number } = {
+      'Ocak': 0, 'Şubat': 1, 'Mart': 2, 'Nisan': 3, 'Mayıs': 4, 'Haziran': 5,
+      'Temmuz': 6, 'Ağustos': 7, 'Eylül': 8, 'Ekim': 9, 'Kasım': 10, 'Aralık': 11
+    };
+    return new Date(parseInt(year), monthMap[month], parseInt(day));
+  };
+
+  const sortedEvents = [...upcomingEvents].sort((a, b) => {
+    const dateA = getEventDate(a.date);
+    const dateB = getEventDate(b.date);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    
+    const aIsPassed = dateA < today;
+    const bIsPassed = dateB < today;
+    
+    // If both passed or both upcoming, sort by date
+    if (aIsPassed && bIsPassed) {
+      return dateB.getTime() - dateA.getTime(); // Most recent passed first
+    }
+    if (!aIsPassed && !bIsPassed) {
+      return dateA.getTime() - dateB.getTime(); // Soonest upcoming first
+    }
+    
+    // Passed events come before upcoming events
+    return aIsPassed ? -1 : 1;
+  });
+
   return <section className="py-20 px-4 bg-muted/30">
       <div className="container mx-auto max-w-7xl">
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 leading-tight tracking-tight text-foreground">
@@ -83,7 +113,7 @@ const Events = () => {
           className="w-full"
         >
           <CarouselContent className="-ml-4">
-            {upcomingEvents.map((event, index) => {
+            {sortedEvents.map((event, index) => {
               const isPassed = isEventPassed(event.date);
               return <CarouselItem key={index} className="pl-4 md:basis-1/2">
                 <Card className={`border-2 hover:scale-105 transition-all duration-300 hover:shadow-2xl group cursor-pointer relative overflow-hidden h-full ${isPassed ? 'opacity-60' : ''} ${event.color === 'primary' ? 'border-primary/20 hover:border-primary' : event.color === 'secondary' ? 'border-secondary/20 hover:border-secondary' : event.color === 'accent' ? 'border-accent/20 hover:border-accent' : 'border-highlight/20 hover:border-highlight'}`}>
