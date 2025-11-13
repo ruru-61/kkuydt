@@ -96,14 +96,9 @@ const Events = () => {
     return aIsPassed ? -1 : 1;
   });
 
-  // Find the index of the latest passed event to start carousel there
-  const latestPassedIndex = sortedEvents.findIndex((event, index) => {
-    const isPassed = isEventPassed(event.date);
-    const nextIsUpcoming = index < sortedEvents.length - 1 && !isEventPassed(sortedEvents[index + 1].date);
-    return isPassed && nextIsUpcoming;
-  });
-  
-  const startIndex = latestPassedIndex >= 0 ? latestPassedIndex : 0;
+  // Find the index of the latest passed event (the last passed event before upcoming ones)
+  const passedEvents = sortedEvents.filter(event => isEventPassed(event.date));
+  const startIndex = passedEvents.length > 0 ? passedEvents.length - 1 : 0;
 
   return <section className="py-20 px-4 bg-muted/30">
       <div className="container mx-auto max-w-7xl">
