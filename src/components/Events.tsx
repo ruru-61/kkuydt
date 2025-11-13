@@ -96,8 +96,14 @@ const Events = () => {
     return aIsPassed ? -1 : 1;
   });
 
-  // Filter to show only upcoming events on the main page
-  const upcomingOnly = sortedEvents.filter(event => !isEventPassed(event.date));
+  // Find the index of the latest passed event to start carousel there
+  const latestPassedIndex = sortedEvents.findIndex((event, index) => {
+    const isPassed = isEventPassed(event.date);
+    const nextIsUpcoming = index < sortedEvents.length - 1 && !isEventPassed(sortedEvents[index + 1].date);
+    return isPassed && nextIsUpcoming;
+  });
+  
+  const startIndex = latestPassedIndex >= 0 ? latestPassedIndex : 0;
 
   return <section className="py-20 px-4 bg-muted/30">
       <div className="container mx-auto max-w-7xl">
@@ -112,11 +118,12 @@ const Events = () => {
           opts={{
             align: "start",
             loop: false,
+            startIndex: startIndex,
           }}
           className="w-full"
         >
           <CarouselContent className="-ml-4">
-            {upcomingOnly.map((event, index) => {
+            {sortedEvents.map((event, index) => {
               const isPassed = isEventPassed(event.date);
               return <CarouselItem key={index} className="pl-4 md:basis-1/2">
                 <Card className={`border-2 hover:scale-105 transition-all duration-300 hover:shadow-2xl group cursor-pointer relative overflow-hidden h-full ${isPassed ? 'opacity-60' : ''} ${event.color === 'primary' ? 'border-primary/20 hover:border-primary' : event.color === 'secondary' ? 'border-secondary/20 hover:border-secondary' : event.color === 'accent' ? 'border-accent/20 hover:border-accent' : 'border-highlight/20 hover:border-highlight'}`}>
