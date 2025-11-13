@@ -96,6 +96,9 @@ const Events = () => {
     return aIsPassed ? -1 : 1;
   });
 
+  // Filter to show only upcoming events on the main page
+  const upcomingOnly = sortedEvents.filter(event => !isEventPassed(event.date));
+
   return <section className="py-20 px-4 bg-muted/30">
       <div className="container mx-auto max-w-7xl">
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 leading-tight tracking-tight text-foreground">
@@ -113,7 +116,7 @@ const Events = () => {
           className="w-full"
         >
           <CarouselContent className="-ml-4">
-            {sortedEvents.map((event, index) => {
+            {upcomingOnly.map((event, index) => {
               const isPassed = isEventPassed(event.date);
               return <CarouselItem key={index} className="pl-4 md:basis-1/2">
                 <Card className={`border-2 hover:scale-105 transition-all duration-300 hover:shadow-2xl group cursor-pointer relative overflow-hidden h-full ${isPassed ? 'opacity-60' : ''} ${event.color === 'primary' ? 'border-primary/20 hover:border-primary' : event.color === 'secondary' ? 'border-secondary/20 hover:border-secondary' : event.color === 'accent' ? 'border-accent/20 hover:border-accent' : 'border-highlight/20 hover:border-highlight'}`}>
