@@ -86,7 +86,7 @@ const Events = () => {
     
     // If both passed or both upcoming, sort by date
     if (aIsPassed && bIsPassed) {
-      return dateB.getTime() - dateA.getTime(); // Most recent passed first
+      return dateA.getTime() - dateB.getTime(); // Oldest passed first
     }
     if (!aIsPassed && !bIsPassed) {
       return dateA.getTime() - dateB.getTime(); // Soonest upcoming first
