@@ -59,7 +59,7 @@ const galleryItems: GalleryItem[] = [{
   image: eventFestival,
   title: "Festivallerimiz",
   emoji: "🎉",
-  popupImages: [festival1, festival2, festival3, festival4, festival5, festival6, festival7, festival8, festival9, festival10, festival11, festival12, festival13, festival14, festival21]
+  popupImages: [festival1, festival2, festival3, festival4, festival5, festival6, festival7, festival11, festival9, festival10, festival8, festival12, festival13, festival14, festival21]
 }, {
   image: eventCafe,
   title: "Speaking Clublarımız",
