@@ -59,12 +59,12 @@ const galleryItems: GalleryItem[] = [{
   image: eventFestival,
   title: "Festivallerimiz",
   emoji: "🎉",
-  popupImages: [festival1, festival2, festival3, festival4, festival5, festival6, festival7, festival8, festival9, festival10, festival11, festival12, festival13, festival14, festival18, festival19, festival20, festival21]
+  popupImages: [festival1, festival2, festival3, festival4, festival5, festival6, festival7, festival8, festival9, festival10, festival11, festival12, festival13, festival14, festival21]
 }, {
   image: eventCafe,
   title: "Speaking Clublarımız",
   emoji: "☕",
-  popupImages: [speakingClub1, speakingClub2, speakingClub3, speakingClub4, speakingClub5, speakingClub6, speakingClub11, speakingClub8, speakingClub9, speakingClub10, speakingClub7, speakingClub12, festival15, festival16, festival17]
+  popupImages: [speakingClub1, speakingClub2, speakingClub3, speakingClub4, speakingClub5, speakingClub6, speakingClub11, speakingClub8, speakingClub9, speakingClub10, speakingClub7, speakingClub12, festival15, festival16, festival17, festival18, festival19, festival20]
 }];
 const Gallery = () => {
   const [activePopup, setActivePopup] = useState<number | null>(null);
