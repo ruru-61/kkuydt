@@ -38,20 +38,6 @@ const upcomingEvents: Event[] = [{
   description: "İngilizce, Fransızca, Arapça ve Türkçe masalarında konuşma pratiği yapın! Farklı dil seviyelerinden öğrencilerle tanışın.",
   participants: "İngilizce • Fransızca • Arapça • Türkçe",
   color: "accent"
-}, {
-  title: "Speaking Club 🗣️",
-  date: "14 Ekim 2024",
-  location: "Microlot Café",
-  description: "İngilizce, Fransızca, Arapça ve Türkçe masalarında konuşma pratiği yapın! Farklı dil seviyelerinden öğrencilerle tanışın.",
-  participants: "İngilizce • Fransızca • Arapça • Türkçe",
-  color: "highlight"
-}, {
-  title: "Speaking Club 🗣️",
-  date: "22 Ekim 2024",
-  location: "Microlot Café",
-  description: "İngilizce, Fransızca, Arapça ve Türkçe masalarında konuşma pratiği yapın! Farklı dil seviyelerinden öğrencilerle tanışın.",
-  participants: "İngilizce • Fransızca • Arapça • Türkçe",
-  color: "primary"
 }];
 const Events = () => {
   const isEventPassed = (dateString: string) => {
