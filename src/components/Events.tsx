@@ -2,6 +2,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, Users, Eye } from "lucide-react";
 import passedStamp from "@/assets/passed-stamp.png";
+import speakingClubNov1 from "@/assets/speaking-club-nov-1.jpg";
+import speakingClubNov2 from "@/assets/speaking-club-nov-2.jpg";
+import speakingClubNov3 from "@/assets/speaking-club-nov-3.jpg";
+import speakingClubNov4 from "@/assets/speaking-club-nov-4.jpg";
+import speakingClubNov5 from "@/assets/speaking-club-nov-5.jpg";
+import speakingClubNov6 from "@/assets/speaking-club-nov-6.jpg";
 import {
   Carousel,
   CarouselContent,
@@ -53,8 +59,8 @@ const upcomingEvents: Event[] = [{
   description: "İngilizce, Fransızca, Arapça ve Türkçe masalarında konuşma pratiği yapın! Farklı dil seviyelerinden öğrencilerle tanışın.",
   participants: "İngilizce • Fransızca • Arapça • Türkçe",
   color: "accent",
-  eventPhotos: [],
-  eventRecap: "Etkinlik detayları yakında eklenecek."
+  eventPhotos: [speakingClubNov1, speakingClubNov2, speakingClubNov3, speakingClubNov4, speakingClubNov5, speakingClubNov6],
+  eventRecap: "12 Kasım 2025 tarihinde Microlot Café'de gerçekleştirdiğimiz Speaking Club etkinliğinde harika bir gece geçirdik! Katılımcılar İngilizce, Fransızca, Arapça ve Türkçe masalarında konuşma pratiği yaparak farklı dil seviyelerinden arkadaşlarla tanıştılar. Oyunlar ve samimi sohbetlerle dolu keyifli bir akşam oldu. Katılan herkese teşekkürler! 💬✨"
 }];
 const Events = () => {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
