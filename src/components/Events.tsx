@@ -192,7 +192,7 @@ const Events = () => {
                             
                             {event.eventPhotos && event.eventPhotos.length > 0 && (
                               <div>
-                                <h3 className="text-lg font-semibold mb-4">Etkinlik Fotoğrafları</h3>
+                                <h3 className="text-lg font-semibold mb-4">Etkinlikten Kareler</h3>
                                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                                   {event.eventPhotos.map((photo, idx) => (
                                     <img
