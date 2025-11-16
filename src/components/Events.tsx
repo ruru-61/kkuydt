@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Calendar, MapPin, Users } from "lucide-react";
+import { Calendar, MapPin, Users, Eye } from "lucide-react";
 import passedStamp from "@/assets/passed-stamp.png";
 import {
   Carousel,
@@ -9,6 +9,15 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { useState } from "react";
+
 interface Event {
   title: string;
   date: string;
@@ -16,6 +25,8 @@ interface Event {
   description: string;
   participants: string;
   color: string;
+  eventPhotos?: string[];
+  eventRecap?: string;
 }
 const upcomingEvents: Event[] = [{
   title: "Fallfest 🍂",
@@ -23,23 +34,31 @@ const upcomingEvents: Event[] = [{
   location: "Gölet Kafe",
   description: "Into Community tarafından gerçekleştirilecek olan bu festivale katılın, birbirinden farklı standlarda ve etkinliklerde arkadaşlarınızla beraber eğlenin!",
   participants: "18:00 - 22:00",
-  color: "primary"
+  color: "primary",
+  eventPhotos: [],
+  eventRecap: "Etkinlik detayları yakında eklenecek."
 }, {
   title: "Speaking Club 🗣️",
   date: "22 Ekim 2025",
   location: "Microlot Café",
   description: "İngilizce, Fransızca, Arapça ve Türkçe masalarında konuşma pratiği yapın! Farklı dil seviyelerinden öğrencilerle tanışın.",
   participants: "İngilizce • Fransızca • Arapça • Türkçe",
-  color: "secondary"
+  color: "secondary",
+  eventPhotos: [],
+  eventRecap: "Etkinlik detayları yakında eklenecek."
 }, {
   title: "Speaking Club 🗣️",
   date: "12 Kasım 2025",
   location: "Microlot Café",
   description: "İngilizce, Fransızca, Arapça ve Türkçe masalarında konuşma pratiği yapın! Farklı dil seviyelerinden öğrencilerle tanışın.",
   participants: "İngilizce • Fransızca • Arapça • Türkçe",
-  color: "accent"
+  color: "accent",
+  eventPhotos: [],
+  eventRecap: "Etkinlik detayları yakında eklenecek."
 }];
 const Events = () => {
+  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
+
   const isEventPassed = (dateString: string) => {
     const [day, month, year] = dateString.split(' ');
     const monthMap: { [key: string]: number } = {
@@ -141,6 +160,48 @@ const Events = () => {
                         <span>{event.participants}</span>
                       </div>
                     </div>
+                    
+                    {isPassed && (
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <Button 
+                            variant="outline" 
+                            className="w-full mt-4 z-20 relative"
+                            onClick={() => setSelectedEvent(event)}
+                          >
+                            <Eye className="w-4 h-4 mr-2" />
+                            Etkinliği İncele
+                          </Button>
+                        </DialogTrigger>
+                        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+                          <DialogHeader>
+                            <DialogTitle className="text-2xl">{event.title}</DialogTitle>
+                          </DialogHeader>
+                          <div className="space-y-6">
+                            <div>
+                              <h3 className="text-lg font-semibold mb-2">Etkinlik Özeti</h3>
+                              <p className="text-muted-foreground">{event.eventRecap}</p>
+                            </div>
+                            
+                            {event.eventPhotos && event.eventPhotos.length > 0 && (
+                              <div>
+                                <h3 className="text-lg font-semibold mb-4">Etkinlik Fotoğrafları</h3>
+                                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                  {event.eventPhotos.map((photo, idx) => (
+                                    <img
+                                      key={idx}
+                                      src={photo}
+                                      alt={`${event.title} - Fotoğraf ${idx + 1}`}
+                                      className="w-full h-48 object-cover rounded-lg hover:scale-105 transition-transform"
+                                    />
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </DialogContent>
+                      </Dialog>
+                    )}
                   </CardContent>
                 </Card>
               </CarouselItem>;
