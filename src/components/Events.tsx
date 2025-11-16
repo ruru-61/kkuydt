@@ -64,6 +64,7 @@ const upcomingEvents: Event[] = [{
 }];
 const Events = () => {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
+  const [zoomedImage, setZoomedImage] = useState<string | null>(null);
 
   const isEventPassed = (dateString: string) => {
     const [day, month, year] = dateString.split(' ');
@@ -198,7 +199,8 @@ const Events = () => {
                                       key={idx}
                                       src={photo}
                                       alt={`${event.title} - Fotoğraf ${idx + 1}`}
-                                      className="w-full h-48 object-cover rounded-lg hover:scale-105 transition-transform"
+                                      className="w-full h-48 object-cover rounded-lg hover:scale-105 transition-transform cursor-pointer"
+                                      onClick={() => setZoomedImage(photo)}
                                     />
                                   ))}
                                 </div>
@@ -216,6 +218,21 @@ const Events = () => {
           <CarouselPrevious className="hidden md:flex" />
           <CarouselNext className="hidden md:flex" />
         </Carousel>
+
+        {/* Image Zoom Dialog */}
+        <Dialog open={!!zoomedImage} onOpenChange={() => setZoomedImage(null)}>
+          <DialogContent className="max-w-[95vw] max-h-[95vh] p-0">
+            <div className="relative w-full h-full flex items-center justify-center bg-black/90">
+              {zoomedImage && (
+                <img
+                  src={zoomedImage}
+                  alt="Zoomed event photo"
+                  className="max-w-full max-h-[95vh] object-contain"
+                />
+              )}
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </section>;
 };
