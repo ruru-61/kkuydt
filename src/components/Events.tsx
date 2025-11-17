@@ -253,7 +253,14 @@ const Events = () => {
         {/* Poster View Dialog */}
         <Dialog open={!!showPoster} onOpenChange={() => { setShowPoster(null); setPosterZoom(100); }}>
           <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 overflow-hidden">
-            <div className="relative w-full h-full flex items-center justify-center bg-black/90 overflow-auto">
+            <div 
+              className="relative w-full h-full flex items-center justify-center bg-black/90 overflow-auto"
+              onWheel={(e) => {
+                e.preventDefault();
+                const delta = e.deltaY > 0 ? -25 : 25;
+                setPosterZoom(prev => Math.min(Math.max(prev + delta, 50), 200));
+              }}
+            >
               {showPoster && (
                 <img
                   src={showPoster}
