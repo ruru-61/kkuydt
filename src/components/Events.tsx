@@ -1,7 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Calendar, MapPin, Users, Eye } from "lucide-react";
+import { Calendar, MapPin, Users, Eye, FileText } from "lucide-react";
 import passedStamp from "@/assets/passed-stamp.png";
+import fallfestPoster from "@/assets/fallfest-poster.png";
 import speakingClubNov1 from "@/assets/speaking-club-nov-1.jpg";
 import speakingClubNov2 from "@/assets/speaking-club-nov-2.jpg";
 import speakingClubNov3 from "@/assets/speaking-club-nov-3.jpg";
@@ -33,6 +34,7 @@ interface Event {
   color: string;
   eventPhotos?: string[];
   eventRecap?: string;
+  poster?: string;
 }
 const upcomingEvents: Event[] = [{
   title: "Fallfest 🍂",
@@ -42,7 +44,8 @@ const upcomingEvents: Event[] = [{
   participants: "18:00 - 22:00",
   color: "primary",
   eventPhotos: [],
-  eventRecap: "Etkinlik detayları yakında eklenecek."
+  eventRecap: "Etkinlik detayları yakında eklenecek.",
+  poster: fallfestPoster
 }, {
   title: "Speaking Club 🗣️",
   date: "22 Ekim 2025",
@@ -65,6 +68,7 @@ const upcomingEvents: Event[] = [{
 const Events = () => {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
+  const [showPoster, setShowPoster] = useState<string | null>(null);
 
   const isEventPassed = (dateString: string) => {
     const [day, month, year] = dateString.split(' ');
@@ -168,6 +172,17 @@ const Events = () => {
                       </div>
                     </div>
                     
+                    {event.poster && (
+                      <Button 
+                        variant="outline" 
+                        className="w-full mt-4"
+                        onClick={() => setShowPoster(event.poster || null)}
+                      >
+                        <FileText className="w-4 h-4 mr-2" />
+                        Etkinlik Hakkında
+                      </Button>
+                    )}
+                    
                     {isPassed && (
                       <Dialog>
                         <DialogTrigger asChild>
@@ -227,6 +242,21 @@ const Events = () => {
                 <img
                   src={zoomedImage}
                   alt="Zoomed event photo"
+                  className="max-w-full max-h-[95vh] object-contain"
+                />
+              )}
+            </div>
+          </DialogContent>
+        </Dialog>
+
+        {/* Poster View Dialog */}
+        <Dialog open={!!showPoster} onOpenChange={() => setShowPoster(null)}>
+          <DialogContent className="max-w-[95vw] max-h-[95vh] p-0">
+            <div className="relative w-full h-full flex items-center justify-center bg-black/90">
+              {showPoster && (
+                <img
+                  src={showPoster}
+                  alt="Event Poster"
                   className="max-w-full max-h-[95vh] object-contain"
                 />
               )}
