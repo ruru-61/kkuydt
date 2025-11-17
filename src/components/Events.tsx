@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Calendar, MapPin, Users, Eye, FileText } from "lucide-react";
+import { Calendar, MapPin, Users, Eye, FileText, ZoomIn, ZoomOut } from "lucide-react";
 import passedStamp from "@/assets/passed-stamp.png";
 import fallfestPoster from "@/assets/fallfest-poster.png";
 import speakingClubNov1 from "@/assets/speaking-club-nov-1.jpg";
@@ -69,6 +69,7 @@ const Events = () => {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
   const [showPoster, setShowPoster] = useState<string | null>(null);
+  const [posterZoom, setPosterZoom] = useState(100);
 
   const isEventPassed = (dateString: string) => {
     const [day, month, year] = dateString.split(' ');
@@ -250,16 +251,35 @@ const Events = () => {
         </Dialog>
 
         {/* Poster View Dialog */}
-        <Dialog open={!!showPoster} onOpenChange={() => setShowPoster(null)}>
-          <DialogContent className="max-w-[95vw] max-h-[95vh] p-0">
-            <div className="relative w-full h-full flex items-center justify-center bg-black/90">
+        <Dialog open={!!showPoster} onOpenChange={() => { setShowPoster(null); setPosterZoom(100); }}>
+          <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 overflow-hidden">
+            <div className="relative w-full h-full flex items-center justify-center bg-black/90 overflow-auto">
               {showPoster && (
                 <img
                   src={showPoster}
                   alt="Event Poster"
-                  className="max-w-full max-h-[95vh] object-contain"
+                  style={{ transform: `scale(${posterZoom / 100})` }}
+                  className="transition-transform duration-200 max-w-full max-h-[95vh] object-contain"
                 />
               )}
+              <div className="absolute bottom-4 right-4 flex gap-2 z-50">
+                <Button
+                  size="icon"
+                  variant="secondary"
+                  onClick={() => setPosterZoom(Math.min(posterZoom + 25, 200))}
+                  disabled={posterZoom >= 200}
+                >
+                  <ZoomIn className="w-4 h-4" />
+                </Button>
+                <Button
+                  size="icon"
+                  variant="secondary"
+                  onClick={() => setPosterZoom(Math.max(posterZoom - 25, 50))}
+                  disabled={posterZoom <= 50}
+                >
+                  <ZoomOut className="w-4 h-4" />
+                </Button>
+              </div>
             </div>
           </DialogContent>
         </Dialog>
