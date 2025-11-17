@@ -70,6 +70,9 @@ const Events = () => {
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
   const [showPoster, setShowPoster] = useState<string | null>(null);
   const [posterZoom, setPosterZoom] = useState(100);
+  const [posterPosition, setPosterPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
 
   const isEventPassed = (dateString: string) => {
     const [day, month, year] = dateString.split(' ');
@@ -251,7 +254,12 @@ const Events = () => {
         </Dialog>
 
         {/* Poster View Dialog */}
-        <Dialog open={!!showPoster} onOpenChange={() => { setShowPoster(null); setPosterZoom(100); }}>
+        <Dialog open={!!showPoster} onOpenChange={() => { 
+          setShowPoster(null); 
+          setPosterZoom(100); 
+          setPosterPosition({ x: 0, y: 0 });
+          setIsDragging(false);
+        }}>
           <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 overflow-hidden">
             <div 
               className="relative w-full h-full flex items-center justify-center bg-black/90 overflow-auto"
@@ -260,13 +268,32 @@ const Events = () => {
                 const delta = e.deltaY > 0 ? -25 : 25;
                 setPosterZoom(prev => Math.min(Math.max(prev + delta, 50), 200));
               }}
+              onMouseDown={(e) => {
+                setIsDragging(true);
+                setDragStart({ x: e.clientX - posterPosition.x, y: e.clientY - posterPosition.y });
+              }}
+              onMouseMove={(e) => {
+                if (isDragging) {
+                  setPosterPosition({
+                    x: e.clientX - dragStart.x,
+                    y: e.clientY - dragStart.y
+                  });
+                }
+              }}
+              onMouseUp={() => setIsDragging(false)}
+              onMouseLeave={() => setIsDragging(false)}
+              style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
             >
               {showPoster && (
                 <img
                   src={showPoster}
                   alt="Event Poster"
-                  style={{ transform: `scale(${posterZoom / 100})` }}
-                  className="transition-transform duration-200 max-w-full max-h-[95vh] object-contain"
+                  style={{ 
+                    transform: `scale(${posterZoom / 100}) translate(${posterPosition.x}px, ${posterPosition.y}px)`,
+                    pointerEvents: 'none'
+                  }}
+                  className="transition-transform duration-200 max-w-full max-h-[95vh] object-contain select-none"
+                  draggable={false}
                 />
               )}
               <div className="absolute bottom-4 right-4 flex gap-2 z-50">
