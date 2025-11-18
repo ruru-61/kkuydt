@@ -47,7 +47,7 @@ const JoinSection = () => {
             <p className="text-card/80 mt-2 drop-shadow-lg">Yıllık Etkinlik</p>
           </div>
           <div className="text-center">
-            <p className="text-4xl md:text-5xl font-bold text-card drop-shadow-lg">3</p>
+            <p className="text-4xl md:text-5xl font-bold text-card drop-shadow-lg">3+</p>
             <p className="text-card/80 mt-2 drop-shadow-lg">Dil Programı</p>
           </div>
         </div>
