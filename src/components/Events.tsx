@@ -116,6 +116,10 @@ const Events = () => {
     return aIsPassed ? -1 : 1;
   });
 
+  // Find the index of the latest passed event (the last passed event before upcoming ones)
+  const passedEvents = sortedEvents.filter(event => isEventPassed(event.date));
+  const startIndex = passedEvents.length > 0 ? passedEvents.length - 1 : 0;
+
   return <section className="py-20 px-4 bg-muted/30">
       <div className="container mx-auto max-w-7xl">
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 leading-tight tracking-tight text-foreground">
@@ -129,6 +133,7 @@ const Events = () => {
           opts={{
             align: "start",
             loop: false,
+            startIndex: startIndex,
           }}
           className="w-full"
         >
