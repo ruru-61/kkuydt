@@ -64,6 +64,24 @@ const upcomingEvents: Event[] = [{
   eventPhotos: [],
   eventRecap: "Etkinlik detayları yakında eklenecek.",
   poster: fallfestPoster
+}, {
+  title: "Speaking Club 🗣️",
+  date: "20 Kasım 2025",
+  location: "Microlot Café",
+  description: "İngilizce, Fransızca, Arapça ve Türkçe masalarında konuşma pratiği yapın! Farklı dil seviyelerinden öğrencilerle tanışın.",
+  participants: "19:00 - 21:00",
+  color: "secondary",
+  eventPhotos: [],
+  eventRecap: "Etkinlik detayları yakında eklenecek."
+}, {
+  title: "Speaking Club 🗣️",
+  date: "3 Aralık 2025",
+  location: "Microlot Café",
+  description: "İngilizce, Fransızca, Arapça ve Türkçe masalarında konuşma pratiği yapın! Farklı dil seviyelerinden öğrencilerle tanışın.",
+  participants: "19:00 - 21:00",
+  color: "accent",
+  eventPhotos: [],
+  eventRecap: "Etkinlik detayları yakında eklenecek."
 }];
 const Events = () => {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
