@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Calendar, MapPin, Users, Eye, FileText, ZoomIn, ZoomOut } from "lucide-react";
+import { Calendar, MapPin, Users, Eye, FileText, ZoomIn, ZoomOut, Sparkles, Heart } from "lucide-react";
 import passedStamp from "@/assets/passed-stamp.png";
 import fallfestPoster from "@/assets/fallfest-poster.png";
 import speakingClubNov1 from "@/assets/speaking-club-nov-1.jpg";
@@ -37,16 +37,6 @@ interface Event {
   poster?: string;
 }
 const upcomingEvents: Event[] = [{
-  title: "Fallfest 🍂",
-  date: "20 Kasım 2025",
-  location: "Gölet Kafe",
-  description: "Into Community tarafından gerçekleştirilecek olan bu festivale katılın, birbirinden farklı standlarda ve etkinliklerde arkadaşlarınızla beraber eğlenin!",
-  participants: "18:00 - 22:00",
-  color: "primary",
-  eventPhotos: [],
-  eventRecap: "Etkinlik detayları yakında eklenecek.",
-  poster: fallfestPoster
-}, {
   title: "Speaking Club 🗣️",
   date: "22 Ekim 2025",
   location: "Microlot Café",
@@ -64,6 +54,16 @@ const upcomingEvents: Event[] = [{
   color: "accent",
   eventPhotos: [speakingClubNov1, speakingClubNov2, speakingClubNov3, speakingClubNov4, speakingClubNov5, speakingClubNov6],
   eventRecap: "12 Kasım 2025 tarihinde Microlot Café'de gerçekleştirdiğimiz Speaking Club etkinliğinde harika bir gece geçirdik! Katılımcılar İngilizce, Fransızca, Arapça ve Türkçe masalarında konuşma pratiği yaparak farklı dil seviyelerinden arkadaşlarla tanıştılar. Oyunlar ve samimi sohbetlerle dolu keyifli bir akşam oldu. Katılan herkese teşekkürler! 💬✨"
+}, {
+  title: "Fallfest 🍂",
+  date: "20 Kasım 2025",
+  location: "Gölet Kafe",
+  description: "Into Community tarafından gerçekleştirilecek olan bu festivale katılın, birbirinden farklı standlarda ve etkinliklerde arkadaşlarınızla beraber eğlenin!",
+  participants: "18:00 - 22:00",
+  color: "primary",
+  eventPhotos: [],
+  eventRecap: "Etkinlik detayları yakında eklenecek.",
+  poster: fallfestPoster
 }];
 const Events = () => {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
@@ -233,6 +233,38 @@ const Events = () => {
                 </Card>
               </CarouselItem>;
             })}
+            
+            {/* Thank You Banner as last carousel item */}
+            <CarouselItem className="pl-4 md:basis-1/2">
+              <Card className="border-2 border-amber-300/40 bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 dark:from-amber-950/30 dark:via-orange-950/30 dark:to-rose-950/30 h-full flex flex-col items-center justify-center text-center p-8 relative overflow-hidden">
+                <div className="absolute top-4 left-4 text-amber-400/60">
+                  <Sparkles className="w-6 h-6 animate-pulse" />
+                </div>
+                <div className="absolute top-4 right-4 text-rose-400/60">
+                  <Heart className="w-6 h-6 animate-pulse" />
+                </div>
+                <div className="absolute bottom-4 left-4 text-rose-400/60">
+                  <Heart className="w-5 h-5 animate-pulse" style={{ animationDelay: '0.5s' }} />
+                </div>
+                <div className="absolute bottom-4 right-4 text-amber-400/60">
+                  <Sparkles className="w-5 h-5 animate-pulse" style={{ animationDelay: '0.5s' }} />
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="flex justify-center gap-2 text-amber-500">
+                    <Sparkles className="w-8 h-8" />
+                    <Heart className="w-8 h-8 text-rose-500" />
+                    <Sparkles className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-amber-600 via-orange-500 to-rose-500 bg-clip-text text-transparent">
+                    Bu Dönemin Etkinliklerine Katıldığınız İçin Teşekkürler!
+                  </h3>
+                  <p className="text-muted-foreground text-lg">
+                    Şubat'ta yeni etkinliklerle görüşmek üzere! 💫
+                  </p>
+                </div>
+              </Card>
+            </CarouselItem>
           </CarouselContent>
           <CarouselPrevious className="hidden md:flex" />
           <CarouselNext className="hidden md:flex" />
