@@ -208,9 +208,9 @@ const Events = () => {
                     {isPassed && (
                       <Dialog>
                         <DialogTrigger asChild>
-                          <Button 
-                            variant="outline" 
-                            className="w-full mt-4 z-20 relative"
+                      <Button 
+                        variant="outline" 
+                        className="w-full mt-8 z-20 relative"
                             onClick={() => setSelectedEvent(event)}
                           >
                             <Eye className="w-4 h-4 mr-2" />
