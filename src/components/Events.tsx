@@ -89,7 +89,7 @@ const upcomingEvents: Event[] = [{
   description: "İngilizce, Fransızca, Arapça ve Türkçe masalarında konuşma pratiği yapın! Farklı dil seviyelerinden öğrencilerle tanışın.",
   participants: "19:00 - 21:00",
   color: "accent",
-  eventPhotos: [speakingClubDec1, speakingClubDec2, speakingClubDec3, speakingClubDec4, speakingClubDec5, speakingClubDec6, speakingClubDec7, speakingClubDec8, speakingClubDec9],
+  eventPhotos: [speakingClubDec6, speakingClubDec1, speakingClubDec4, speakingClubDec7, speakingClubDec3, speakingClubDec8, speakingClubDec5, speakingClubDec9, speakingClubDec2],
   eventRecap: "3 Aralık 2025 tarihinde Microlot Café'de gerçekleştirdiğimiz Speaking Club etkinliğinde harika bir gece geçirdik! Katılımcılar İngilizce, Fransızca, Arapça ve Türkçe masalarında konuşma pratiği yaparak farklı dil seviyelerinden arkadaşlarla tanıştılar. Keyifli bir akşam oldu. Katılan herkese teşekkürler! 💬✨"
 }];
 const Events = () => {
