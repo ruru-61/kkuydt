@@ -9,13 +9,6 @@ import speakingClubNov3 from "@/assets/speaking-club-nov-3.jpg";
 import speakingClubNov4 from "@/assets/speaking-club-nov-4.jpg";
 import speakingClubNov5 from "@/assets/speaking-club-nov-5.jpg";
 import speakingClubNov6 from "@/assets/speaking-club-nov-6.jpg";
-import speakingClubDec1 from "@/assets/speaking-club-dec-1.jpg";
-import speakingClubDec2 from "@/assets/speaking-club-dec-2.jpg";
-import speakingClubDec3 from "@/assets/speaking-club-dec-3.jpg";
-import speakingClubDec4 from "@/assets/speaking-club-dec-4.jpg";
-import speakingClubDec5 from "@/assets/speaking-club-dec-5.jpg";
-import speakingClubDec6 from "@/assets/speaking-club-dec-6.jpg";
-import speakingClubDec7 from "@/assets/speaking-club-dec-7.jpg";
 import {
   Carousel,
   CarouselContent,
@@ -87,8 +80,8 @@ const upcomingEvents: Event[] = [{
   description: "İngilizce, Fransızca, Arapça ve Türkçe masalarında konuşma pratiği yapın! Farklı dil seviyelerinden öğrencilerle tanışın.",
   participants: "19:00 - 21:00",
   color: "accent",
-  eventPhotos: [speakingClubDec1, speakingClubDec2, speakingClubDec3, speakingClubDec4, speakingClubDec5, speakingClubDec6, speakingClubDec7],
-  eventRecap: "3 Aralık 2025 tarihinde Microlot Café'de gerçekleştirdiğimiz Speaking Club etkinliğinde harika bir gece geçirdik! Katılımcılar İngilizce, Fransızca, Arapça ve Türkçe masalarında konuşma pratiği yaparak farklı dil seviyelerinden arkadaşlarla tanıştılar. Keyifli bir akşam oldu. Katılan herkese teşekkürler! 💬✨"
+  eventPhotos: [],
+  eventRecap: "Etkinlik detayları yakında eklenecek."
 }];
 const Events = () => {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
