@@ -90,7 +90,7 @@ const upcomingEvents: Event[] = [{
   participants: "19:00 - 21:00",
   color: "accent",
   eventPhotos: [speakingClubDec1, speakingClubDec6, speakingClubDec4, speakingClubDec7, speakingClubDec3, speakingClubDec8, speakingClubDec5, speakingClubDec9, speakingClubDec2],
-  eventRecap: "3 Aralık 2025 tarihinde Microlot Kafe'de gerçekleştirdiğimiz 2025-2026 Güz Dönemi'nin son Speaking Club etkinliğinde harika bir gece geçirdik! Katılımcılar İngilizce, Fransızca, Arapça ve Türkçe masalarında konuşma pratiği yaparak farklı dil seviyelerinden arkadaşlarla tanıştılar. Keyifli bir akşam oldu. Katılan herkese teşekkürler! 💬✨"
+  eventRecap: "3 Aralık 2025 tarihinde Microlot Kafe'de gerçekleştirdiğimiz 2025-2026 Güz Dönemi'nin son Speaking Club etkinliğinde harika bir gece geçirdik! Katılımcılar İngilizce, Fransızca, Arapça ve Türkçe masalarında konuşma pratiği yaparak farklı dil seviyelerinden arkadaşlarla vakit geçirdiler. Keyifli bir akşam oldu. Katılan herkese teşekkürler! 💬✨"
 }];
 const Events = () => {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
