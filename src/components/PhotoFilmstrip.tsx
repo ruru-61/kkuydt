@@ -113,10 +113,14 @@ const PhotoFilmstrip = ({ onPhotoClick }: PhotoFilmstripProps) => {
   const duplicatedPhotos = [...filmstripPhotos, ...filmstripPhotos];
 
   return (
-    <div className="filmstrip-wrapper relative w-screen left-1/2 -translate-x-1/2 overflow-hidden bg-background/50 backdrop-blur-sm py-3 mb-6">
+    <div className="relative w-full overflow-hidden bg-background/50 backdrop-blur-sm py-2 mb-6">
+      {/* Gradient overlays for fade effect */}
+      <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-r from-muted/30 to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-l from-muted/30 to-transparent z-10 pointer-events-none" />
+      
       <div 
         ref={containerRef}
-        className="filmstrip-container flex gap-1"
+        className="filmstrip-container flex gap-2 sm:gap-3"
       >
         {duplicatedPhotos.map((photo, index) => (
           <div
@@ -124,11 +128,11 @@ const PhotoFilmstrip = ({ onPhotoClick }: PhotoFilmstripProps) => {
             className="filmstrip-item flex-shrink-0 cursor-pointer group"
             onClick={() => handlePhotoClick(photo.galleryId)}
           >
-            <div className="relative overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 hover:z-20">
+            <div className="relative overflow-hidden rounded-md sm:rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:scale-110 hover:z-20">
               <img
                 src={photo.src}
                 alt={`Gallery photo ${index + 1}`}
-                className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto object-cover"
+                className="h-12 sm:h-16 md:h-20 w-auto object-cover"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors duration-300" />
@@ -138,13 +142,15 @@ const PhotoFilmstrip = ({ onPhotoClick }: PhotoFilmstripProps) => {
       </div>
 
       <style>{`
-        .filmstrip-wrapper {
-          max-width: 100vw;
-        }
-        
         .filmstrip-container {
           width: max-content;
-          animation: filmstrip-scroll 80s linear infinite;
+          animation: filmstrip-scroll 60s linear infinite;
+        }
+        
+        .filmstrip-item:hover ~ .filmstrip-item,
+        .filmstrip-item:hover,
+        .filmstrip-container:has(.filmstrip-item:hover) {
+          animation-play-state: paused;
         }
         
         .filmstrip-container:has(.filmstrip-item:hover) {
