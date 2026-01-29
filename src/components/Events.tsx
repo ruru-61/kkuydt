@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, Users, Eye, FileText, ZoomIn, ZoomOut, Sparkles, Heart } from "lucide-react";
+import PhotoFilmstrip from "@/components/PhotoFilmstrip";
 import passedStamp from "@/assets/passed-stamp.png";
 import fallfestPoster from "@/assets/fallfest-poster.png";
 import speakingClubNov1 from "@/assets/speaking-club-nov-1.jpg";
@@ -149,6 +150,8 @@ const Events = () => {
 
   return <section className="py-20 px-4 bg-muted/30">
       <div className="container mx-auto max-w-7xl">
+        <PhotoFilmstrip />
+        
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 leading-tight tracking-tight text-foreground">
           <span className="gradient-secondary bg-clip-text text-slate-50 block break-words">Yaklaşan Etkinlikler</span>
         </h2>
