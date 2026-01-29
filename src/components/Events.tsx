@@ -171,13 +171,13 @@ const Events = () => {
             {sortedEvents.map((event, index) => {
               const isPassed = isEventPassed(event.date);
               return <CarouselItem key={index} className="pl-4 md:basis-1/2">
-                <Card className={`border-2 hover:scale-105 transition-all duration-300 hover:shadow-2xl group cursor-pointer relative overflow-hidden h-full ${isPassed ? 'opacity-60' : ''} ${event.color === 'primary' ? 'border-primary/20 hover:border-primary' : event.color === 'secondary' ? 'border-secondary/20 hover:border-secondary' : event.color === 'accent' ? 'border-accent/20 hover:border-accent' : 'border-highlight/20 hover:border-highlight'}`}>
+                <Card className={`border-2 hover:scale-105 transition-all duration-300 hover:shadow-2xl group cursor-pointer relative overflow-hidden h-full flex flex-col ${isPassed ? 'opacity-60' : ''} ${event.color === 'primary' ? 'border-primary/20 hover:border-primary' : event.color === 'secondary' ? 'border-secondary/20 hover:border-secondary' : event.color === 'accent' ? 'border-accent/20 hover:border-accent' : 'border-highlight/20 hover:border-highlight'}`}>
                   {isPassed && (
-                    <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none">
                       <img 
                         src={passedStamp} 
                         alt="Passed" 
-                        className="w-64 h-64 object-contain opacity-80"
+                        className="w-48 h-48 object-contain opacity-80"
                       />
                     </div>
                   )}
@@ -188,7 +188,7 @@ const Events = () => {
                       </span>
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-4">
+                  <CardContent className="space-y-4 flex-1 flex flex-col">
                     <p className="text-foreground/80 leading-relaxed">{event.description}</p>
                     
                     <div className="space-y-2 text-sm">
@@ -218,46 +218,48 @@ const Events = () => {
                     )}
                     
                     {isPassed && (
-                      <Dialog>
-                        <DialogTrigger asChild>
-                      <Button 
-                        variant="outline" 
-                        className="w-full mt-8 z-20 relative"
-                            onClick={() => setSelectedEvent(event)}
-                          >
-                            <Eye className="w-4 h-4 mr-2" />
-                            Etkinliği İncele
-                          </Button>
-                        </DialogTrigger>
-                        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
-                          <DialogHeader>
-                            <DialogTitle className="text-2xl">{event.title}</DialogTitle>
-                          </DialogHeader>
-                          <div className="space-y-6">
-                            <div>
-                              <h3 className="text-lg font-semibold mb-2">Etkinlik Özeti</h3>
-                              <p className="text-muted-foreground">{event.eventRecap}</p>
-                            </div>
-                            
-                            {event.eventPhotos && event.eventPhotos.length > 0 && (
+                      <div className="mt-auto pt-4">
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button 
+                              variant="outline" 
+                              className="w-full z-20 relative"
+                              onClick={() => setSelectedEvent(event)}
+                            >
+                              <Eye className="w-4 h-4 mr-2" />
+                              Etkinliği İncele
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+                            <DialogHeader>
+                              <DialogTitle className="text-2xl">{event.title}</DialogTitle>
+                            </DialogHeader>
+                            <div className="space-y-6">
                               <div>
-                                <h3 className="text-lg font-semibold mb-4">Etkinlikten Kareler</h3>
-                                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                                  {event.eventPhotos.map((photo, idx) => (
-                                    <img
-                                      key={idx}
-                                      src={photo}
-                                      alt={`${event.title} - Fotoğraf ${idx + 1}`}
-                                      className="w-full h-48 object-cover rounded-lg hover:scale-105 transition-transform cursor-pointer"
-                                      onClick={() => setZoomedImage(photo)}
-                                    />
-                                  ))}
-                                </div>
+                                <h3 className="text-lg font-semibold mb-2">Etkinlik Özeti</h3>
+                                <p className="text-muted-foreground">{event.eventRecap}</p>
                               </div>
-                            )}
-                          </div>
-                        </DialogContent>
-                      </Dialog>
+                              
+                              {event.eventPhotos && event.eventPhotos.length > 0 && (
+                                <div>
+                                  <h3 className="text-lg font-semibold mb-4">Etkinlikten Kareler</h3>
+                                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                    {event.eventPhotos.map((photo, idx) => (
+                                      <img
+                                        key={idx}
+                                        src={photo}
+                                        alt={`${event.title} - Fotoğraf ${idx + 1}`}
+                                        className="w-full h-48 object-cover rounded-lg hover:scale-105 transition-transform cursor-pointer"
+                                        onClick={() => setZoomedImage(photo)}
+                                      />
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          </DialogContent>
+                        </Dialog>
+                      </div>
                     )}
                   </CardContent>
                 </Card>
