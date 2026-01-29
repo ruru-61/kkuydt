@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 // Import all photos from Gallery
 import eventStudy from "@/assets/education-session.jpg";
@@ -98,7 +98,6 @@ interface PhotoFilmstripProps {
 }
 
 const PhotoFilmstrip = ({ onPhotoClick }: PhotoFilmstripProps) => {
-  const [isPaused, setIsPaused] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handlePhotoClick = (galleryId: number) => {
@@ -114,27 +113,19 @@ const PhotoFilmstrip = ({ onPhotoClick }: PhotoFilmstripProps) => {
   const duplicatedPhotos = [...filmstripPhotos, ...filmstripPhotos];
 
   return (
-    <div 
-      className="relative w-full overflow-hidden bg-background/50 backdrop-blur-sm py-2 mb-6"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
+    <div className="relative w-full overflow-hidden bg-background/50 backdrop-blur-sm py-2 mb-6">
       {/* Gradient overlays for fade effect */}
       <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-r from-muted/30 to-transparent z-10 pointer-events-none" />
       <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-l from-muted/30 to-transparent z-10 pointer-events-none" />
       
       <div 
         ref={containerRef}
-        className="flex gap-2 sm:gap-3"
-        style={{
-          animation: isPaused ? 'none' : 'filmstrip-scroll 60s linear infinite',
-          width: 'max-content',
-        }}
+        className="filmstrip-container flex gap-2 sm:gap-3"
       >
         {duplicatedPhotos.map((photo, index) => (
           <div
             key={index}
-            className="flex-shrink-0 cursor-pointer group"
+            className="filmstrip-item flex-shrink-0 cursor-pointer group"
             onClick={() => handlePhotoClick(photo.galleryId)}
           >
             <div className="relative overflow-hidden rounded-md sm:rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:scale-110 hover:z-20">
@@ -151,6 +142,21 @@ const PhotoFilmstrip = ({ onPhotoClick }: PhotoFilmstripProps) => {
       </div>
 
       <style>{`
+        .filmstrip-container {
+          width: max-content;
+          animation: filmstrip-scroll 60s linear infinite;
+        }
+        
+        .filmstrip-item:hover ~ .filmstrip-item,
+        .filmstrip-item:hover,
+        .filmstrip-container:has(.filmstrip-item:hover) {
+          animation-play-state: paused;
+        }
+        
+        .filmstrip-container:has(.filmstrip-item:hover) {
+          animation-play-state: paused;
+        }
+        
         @keyframes filmstrip-scroll {
           0% {
             transform: translateX(0);
