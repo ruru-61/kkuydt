@@ -167,7 +167,7 @@ const Gallery = () => {
     return () => document.removeEventListener('click', handleClickOutside);
   }, [isMobile, activePopup]);
 
-  return <section className="py-20 px-4 bg-background relative">
+  return <section id="gallery-section" className="py-20 px-4 bg-background relative">
       <div className="container mx-auto max-w-7xl">
         <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center leading-tight sm:leading-tight md:leading-[1.15] mb-2 sm:mb-4 px-4">
           <span className="block gradient-primary bg-clip-text break-words text-slate-50">Geçmiş Etkinlikler</span>

@@ -102,8 +102,8 @@ const PhotoFilmstrip = ({ onPhotoClick }: PhotoFilmstripProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handlePhotoClick = (galleryId: number) => {
-    // Scroll to gallery section
-    const gallerySection = document.querySelector('section.py-20.px-4.bg-background');
+    // Scroll to gallery section using id
+    const gallerySection = document.getElementById('gallery-section');
     if (gallerySection) {
       gallerySection.scrollIntoView({ behavior: 'smooth' });
     }
